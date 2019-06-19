@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import Card from '../components/Card';
 
 
 export const TextBox = () => {
@@ -11,6 +12,7 @@ export const TextBox = () => {
     }), [dispatch]);
     return (
       <div>
+        <Card/>
         <div>Text: {text}</div>
         <input value={text} onChange={setText} />
       </div>
