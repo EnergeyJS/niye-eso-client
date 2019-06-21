@@ -1,5 +1,4 @@
-import React , { useState } from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,107 +15,48 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 import DrawerMenu from './DrawerMenu';
+import DrawerMenuContext from './context/DrawerMenuContext';
 
-const useStyles = makeStyles(theme => ({
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: 200,
-    },
-  },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
-  },
-  sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  },
-}));
+import useStyles from '../components/styles/useStyles'
 
-export default function PrimarySearchAppBar() {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+export default function NavBar () {
+  const classes = useStyles ();
+  const [anchorEl, setAnchorEl] = React.useState (null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState (null);
+  const [drawerIsOpen, setDrawerIsOpen] = useState (false);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMenuOpen = Boolean (anchorEl);
+  const isMobileMenuOpen = Boolean (mobileMoreAnchorEl);
 
-  function handleProfileMenuOpen(event) {
-    setAnchorEl(event.currentTarget);
+  function handleProfileMenuOpen (event) {
+    setAnchorEl (event.currentTarget);
   }
 
-  function handleMobileMenuClose() {
-    setMobileMoreAnchorEl(null);
+  function handleMobileMenuClose () {
+    setMobileMoreAnchorEl (null);
   }
 
-  function handleMenuClose() {
-    setAnchorEl(null);
-    handleMobileMenuClose();
+  function handleMenuClose () {
+    setAnchorEl (null);
+    handleMobileMenuClose ();
   }
 
-  function handleMobileMenuOpen(event) {
-    setMobileMoreAnchorEl(event.currentTarget);
+  function handleMobileMenuOpen (event) {
+    setMobileMoreAnchorEl (event.currentTarget);
   }
 
-  function drawerMenuOpen(){
-      setDrawerIsOpen(true);
+  function drawerMenuOpen () {
+    setDrawerIsOpen (!drawerIsOpen);
   }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{vertical: 'top', horizontal: 'right'}}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{vertical: 'top', horizontal: 'right'}}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -129,10 +69,10 @@ export default function PrimarySearchAppBar() {
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{vertical: 'top', horizontal: 'right'}}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{vertical: 'top', horizontal: 'right'}}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
@@ -175,7 +115,7 @@ export default function PrimarySearchAppBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="Open drawer"
-            onClick={drawerMenuOpen.bind(this)}
+            onClick={drawerMenuOpen}
           >
             <MenuIcon />
           </IconButton>
@@ -192,7 +132,7 @@ export default function PrimarySearchAppBar() {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              inputProps={{ 'aria-label': 'Search' }}
+              inputProps={{'aria-label': 'Search'}}
             />
           </div>
           <div className={classes.grow} />
@@ -233,7 +173,9 @@ export default function PrimarySearchAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      <DrawerMenu side='left' open={drawerIsOpen}/>
+      <DrawerMenuContext.Provider value={[drawerIsOpen, setDrawerIsOpen]} >
+        <DrawerMenu show={drawerIsOpen} />
+      </DrawerMenuContext.Provider>
     </div>
   );
 }
