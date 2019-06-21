@@ -115,10 +115,7 @@ export default function NavBar () {
             className={classes.menuButton}
             color="inherit"
             aria-label="Open drawer"
-<<<<<<< HEAD
             onClick={drawerMenuOpen}
-=======
->>>>>>> 1ada0182f49634bf89feb899501d7f8b0af4abd9
           >
             <MenuIcon />
           </IconButton>
