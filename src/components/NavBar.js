@@ -175,7 +175,6 @@ export default function PrimarySearchAppBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="Open drawer"
-            onClick={drawerMenuOpen.bind(this)}
           >
             <MenuIcon />
           </IconButton>

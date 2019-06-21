@@ -6,6 +6,7 @@ import Counter from './views/Counter';
 import { TextBox }from './components/TextBox';
 import Counter2 from './views/Counter2';
 import Home from './views/Home';
+import Card from './components/Card'
 
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
           <Route path="/counter" exact component={Counter} />
           <Route path="/counter2" exact component={Counter2} />
           <Route path="/text/" component={TextBox} />
+          <Route path="/card/" component={Card} />
         </div>
       </Router>
   </Provider>
