@@ -26,14 +26,19 @@ export default createMuiTheme({
       }
     },
     MuiDrawer: {
-      root: {
-        color:'white',
-        backgroundColor: '#43a047'
+        paper:{
+          color:'white',
+          backgroundColor: '#2196f3'
+        }
       },
-        // paper:{
-        //   color:'white',
-        //   backgroundColor: '#43a047'
-        // }
+      MuiSvgIcon:{
+        root:{color:'white'}
+      },
+      MuiMenu:{
+        paper:{
+          backgroundColor: '#2196f3',
+          color:'white'
+        }
       }
     }
 });
