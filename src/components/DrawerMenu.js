@@ -25,7 +25,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
+import Card from './Card'
+import Table from './Table'
+import Slider from './Slider'
+import Select from './Select'
 
 
 
@@ -372,7 +375,6 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
@@ -396,6 +398,14 @@ export default function MiniDrawer() {
           nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
+       
+          <Card/>
+          <Card/>
+          <Slider/>
+          <Slider/>
+          <Select/>
+          <Table/>
+    
       </main>
     </div>
   );

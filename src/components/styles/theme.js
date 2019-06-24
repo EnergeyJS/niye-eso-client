@@ -39,6 +39,33 @@ export default createMuiTheme({
           backgroundColor: '#2196f3',
           color:'white'
         }
+      },
+      MuiCard:{
+        root:{
+          maxWidth:'300px',
+          display:'inline-block',
+          position:'relative',
+          margin:'5px',
+          '&:hover': {
+            boxShadow:'2px 3px 10px 1px gray'
+          },
+          '& div.discount':{            
+            position:'absolute',
+            right:'0',
+            top:'0',
+            borderRight:'solid 40px #f57c00',
+            borderTop:'solid 40px #f57c00',
+            borderBottom:'solid 40px transparent',
+            borderLeft:'solid 40px transparent',
+            '& span':{
+              position:"absolute",
+              transform: 'rotate(45deg)',
+              top: "-20px",
+              left: "1px",
+              color:'white'
+            }
+          }
+        }
       }
     }
 });
