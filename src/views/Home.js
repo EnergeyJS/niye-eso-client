@@ -1,8 +1,9 @@
 import React from 'react';
-import Navbar from '../components/NavBar';
+import Menu from '../components/menu/drawerMenu';
+import { Typography } from '@material-ui/core';
+import Card from '../components/Card.js';
 export default function home(){
     return <div>
-        <Navbar/>       
+        <Menu/>
     </div>
-  );
 }
