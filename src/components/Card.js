@@ -46,17 +46,23 @@ export default function RecipeReviewCard () {
   const classes = useStyles ();
   const [expanded, setExpanded] = useState (false);
   const [open, setOpen] = useState (false);
+  const [object, setObject] = useState ({name: 'Auvee', age: '23'});
 
   function handleExpandClick () {
     setExpanded (!expanded);
   }
 
-  function closeModal() {
-    setOpen(!open);
+  function closeModal () {
+    setOpen (!open);
+  }
+
+  function openModal() {
+    setOpen (!open)
+    setObject({name: 'Nabwab', age: '24'})
   }
 
   return (
-    <Card className={classes.card} onClick={() => setOpen(!open)}>
+    <Card className={classes.card} onClick={() => openModal()}>
       <div className="discount"><span>-13%</span></div>
       <CardHeader
         avatar={
@@ -78,7 +84,7 @@ export default function RecipeReviewCard () {
           guests. Add 1 cup of frozen peas along with the mussels, if you like.
         </Typography>
         <hr />
-          <MoDal open={open} closeModal={closeModal}/>
+        <MoDal open={open} closeModal={closeModal} data={object} />
       </CardContent>
 
       <CardActions disableSpacing>

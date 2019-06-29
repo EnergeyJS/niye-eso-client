@@ -29,9 +29,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleModal({open = false, closeModal}) {
+export default function SimpleModal({open = false, closeModal, data={}}) {
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
+
+  console.log(data);
 
   const classes = useStyles();
 
@@ -48,7 +50,7 @@ export default function SimpleModal({open = false, closeModal}) {
             Text in a modal
           </Typography>
           <Typography variant="subtitle1" id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula. {data.name}
           </Typography>
           <SimpleModal />
         </div>
