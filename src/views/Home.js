@@ -1,9 +1,7 @@
 import React from 'react';
-import Menu from '../components/menu/drawerMenu';
-import { Typography } from '@material-ui/core';
-import Card from '../components/Card.js';
+import Card from '../components/Card';
 export default function home(){
     return <div>
-        <Menu/>
+        <Card/>
     </div>
 }
