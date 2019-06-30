@@ -49,6 +49,7 @@ export default function SimpleModal({open = false, closeModal, data={}}) {
           <Typography variant="h6" id="modal-title">
             Text in a modal
           </Typography>
+          <button onClick={closeModal}>Close Button</button>
           <Typography variant="subtitle1" id="simple-modal-description">
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula. {data.name}
           </Typography>

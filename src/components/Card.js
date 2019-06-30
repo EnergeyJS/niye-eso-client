@@ -52,16 +52,18 @@ export default function RecipeReviewCard ({data}) {
   }
 
   function closeModal () {
-    setOpen (!open);
+    console.log('Here clicked');
+    setOpen (false);
   }
 
   function openModal(modalData) {
-    setOpen (!open)
+    console.log('Open modal')
+    setOpen (true)
     setModalData(modalData)
   }
 
   return (
-    <Card className={classes.card} onClick={() => openModal(data)}>
+    <Card className={classes.card}>
       <div className="discount"><span>{data.discount}</span></div>
       <CardHeader
         avatar={
@@ -77,6 +79,7 @@ export default function RecipeReviewCard ({data}) {
         image="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
         title="Paella dish"
       />
+      <button onClick={() => openModal(data)}>Show Details</button>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {data.description}
