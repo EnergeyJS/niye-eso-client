@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -10,22 +10,14 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red, orange } from '@material-ui/core/colors';
+import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 345,
-    border: 1,
-    borderColor:orange[900],
-    boxShadow: '0 3px 5px 2px '+orange[900],
-  },
-  cardContent:{
-    boxShadow: '0 3px 5px 2px '+orange[900],
-  },
+import MoDal from '../components/Modal';
+
+const useStyles = makeStyles (theme => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -33,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   expand: {
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
+    transition: theme.transitions.create ('transform', {
       duration: theme.transitions.duration.shortest,
     }),
   },
@@ -43,28 +35,40 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500],
   },
+  discount: {
+    backgroundColor: red[500],
+    position: 'absolute',
+    right: '0',
+  },
 }));
 
-export default function RecipeReviewCard() {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+export default function RecipeReviewCard () {
+  const classes = useStyles ();
+  const [expanded, setExpanded] = useState (false);
+  const [open, setOpen] = useState (false);
+  const [object, setObject] = useState ({name: 'Auvee', age: '23'});
 
-  function handleExpandClick() {
-    setExpanded(!expanded);
+  function handleExpandClick () {
+    setExpanded (!expanded);
+  }
+
+  function closeModal () {
+    setOpen (!open);
+  }
+
+  function openModal() {
+    setOpen (!open)
+    setObject({name: 'Nabwab', age: '24'})
   }
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} onClick={() => openModal()}>
+      <div className="discount"><span>-13%</span></div>
       <CardHeader
         avatar={
           <Avatar aria-label="Recipe" className={classes.avatar}>
             R
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="Settings">
-            <MoreVertIcon />
-          </IconButton>
         }
         title="Shrimp and Chorizo Paella"
         subheader="September 14, 2016"
@@ -79,9 +83,10 @@ export default function RecipeReviewCard() {
           This impressive paella is a perfect party dish and a fun meal to cook together with your
           guests. Add 1 cup of frozen peas along with the mussels, if you like.
         </Typography>
-        <hr/>
+        <hr />
+        <MoDal open={open} closeModal={closeModal} data={object} />
       </CardContent>
-      
+
       <CardActions disableSpacing>
         <IconButton aria-label="Add to favorites">
           <FavoriteIcon />
@@ -90,7 +95,7 @@ export default function RecipeReviewCard() {
           <ShareIcon />
         </IconButton>
         <IconButton
-          className={clsx(classes.expand, {
+          className={clsx (classes.expand, {
             [classes.expandOpen]: expanded,
           })}
           onClick={handleExpandClick}
