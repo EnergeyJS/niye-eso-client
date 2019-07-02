@@ -115,7 +115,6 @@ export default function RecipeReviewCard({data}) {
         >
           <ExpandMoreIcon />
         </IconButton>
-          <button onClick={() => openModal(data)}>Show Details</button>
       </CardActions>
     </Card>
   );
