@@ -13,6 +13,7 @@ import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Button from '@material-ui/core/Button';
 
 import MoDal from '../components/Modal';
 
@@ -41,7 +42,7 @@ const useStyles = makeStyles (theme => ({
   },
 }));
 
-export default function RecipeReviewCard ({data}) {
+export default function RecipeReviewCard({data}) {
   const classes = useStyles ();
   const [expanded, setExpanded] = useState (false);
   const [open, setOpen] = useState (false);
@@ -52,14 +53,14 @@ export default function RecipeReviewCard ({data}) {
   }
 
   function closeModal () {
-    console.log('Here clicked');
+    console.log ('Here clicked');
     setOpen (false);
   }
 
-  function openModal(modalData) {
-    console.log('Open modal')
-    setOpen (true)
-    setModalData(modalData)
+  function openModal (modalData) {
+    console.log ('Open modal');
+    setOpen (true);
+    setModalData (modalData);
   }
 
   return (
@@ -79,7 +80,6 @@ export default function RecipeReviewCard ({data}) {
         image="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
         title="Paella dish"
       />
-      <button onClick={() => openModal(data)}>Show Details</button>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {data.description}
@@ -87,6 +87,16 @@ export default function RecipeReviewCard ({data}) {
         <hr />
         <MoDal open={open} closeModal={closeModal} data={modalData} />
       </CardContent>
+      <Typography align="center">
+        <Button
+          onClick={() => openModal (data)}
+          variant="contained"
+          color="primary"
+          className={classes.button}
+        >
+          Show Details
+        </Button>
+      </Typography>
 
       <CardActions disableSpacing>
         <IconButton aria-label="Add to favorites">

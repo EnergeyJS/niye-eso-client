@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../components/Card";
+import CartWrapper from "../components/CartWrapper";
 export default function home() {
   const body = [
     {
@@ -34,6 +35,8 @@ export default function home() {
   return (
     <div>
         {body.map((item, index)=> <Card key={index} data={item}/>)}
+        {body.map((item, index)=> <CartWrapper key={index} data={item}/>)}
+        
     </div>
   );
 }
