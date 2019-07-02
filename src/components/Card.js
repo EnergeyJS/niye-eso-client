@@ -79,7 +79,6 @@ export default function RecipeReviewCard ({data}) {
         image="/static/images/cards/paella.jpg"
         title="Paella dish"
       />
-      <button onClick={() => openModal(data)}>Show Details</button>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {data.description}
@@ -105,6 +104,7 @@ export default function RecipeReviewCard ({data}) {
         >
           <ExpandMoreIcon />
         </IconButton>
+          <button onClick={() => openModal(data)}>Show Details</button>
       </CardActions>
     </Card>
   );
