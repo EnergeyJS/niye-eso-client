@@ -6,7 +6,8 @@ import Counter from './views/Counter';
 import Home from './views/Home';
 import MTStyle from './modules/index';
 
-import AppBar from './components/menu/appBar';
+import AppBar from './components/menu/AppBar';
+import Cart from './components/CartWrapper';
 
 const App = () => {
   const classes = MTStyle ();
@@ -15,6 +16,7 @@ const App = () => {
       <Router>
         <div className={classes.root}>
           <AppBar />
+          <Cart/>
           <main className={classes.content}>
             <Route path="/" exact component={Home} />
             <Route path="/counter" exact component={Counter} />

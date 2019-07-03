@@ -7,23 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
 
-import MoDal from '../components/Modal';
+import CartModal from '../components/menu/CartModal';
 
 const useStyles = makeStyles (theme => ({
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create ('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
   avatar: {
     backgroundColor: red[500],
   },
@@ -32,20 +18,20 @@ const useStyles = makeStyles (theme => ({
     position: 'absolute',
     right: '0',
   },
-  card:{
+  cart:{
       position:'fixed',
-      right:0,
+      right:'-30px',
       top:"45%",
-      width:"80px",
-      height:'40px'
+      width:"auto",
+      height:'auto',
+      'z-index': '999'
   }
 }));
 
-export default function CartWrapper({data}) {
+export default function CartWrapper() {
   const classes = useStyles ();
   const [expanded, setExpanded] = useState (false);
   const [open, setOpen] = useState (false);
-  const [modalData, setModalData] = useState (data);
 
 
   function closeModal () {
@@ -53,22 +39,24 @@ export default function CartWrapper({data}) {
     setOpen (false);
   }
 
+  function openModal(){
+    setOpen(true);
+  }
+
 
   return (
-    <Card className={classes.card}>
-      <div className="discount"><span>{data.discount}</span></div>
+    <Card className={classes.cart} >
+      <div className="discount"><span></span></div>
       <CardHeader
         avatar={
-         <IconButton>ShoppingCartIcon</IconButton>
-        }
-        title={data.name}
-        subheader={data.date}
+         <IconButton onClick={() => openModal ()}>ShoppingCartIcon</IconButton>
+        }        
       />      
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
         </Typography>
-        <MoDal open={open} closeModal={closeModal} data={modalData} />
       </CardContent>
+      <CartModal open={open} closeModal={closeModal}/>
     </Card>
   );
 }
