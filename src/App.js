@@ -6,10 +6,24 @@ import Counter from './views/Counter';
 import Home from './views/Home';
 import MTStyle from './modules/index';
 
+<<<<<<< HEAD
 import AppBar from './components/menu/AppBar';
 import Cart from './components/CartWrapper';
+=======
+import AppBar from './components/menu/appBar';
+import { messaging } from "./init-fcm";
+>>>>>>> dev
 
 const App = () => {
+  messaging.requestPermission()
+    .then(async function() {
+      const token = await messaging.getToken();
+      console.log(token);
+    })
+    .catch(function(err) {
+      console.log("Unable to get permission to notify.", err);
+    });
+  navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
   const classes = MTStyle ();
   return (
     <Provider store={store}>
