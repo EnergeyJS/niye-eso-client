@@ -47,7 +47,7 @@ export default function CartWrapper () {
           <CartModal open={open} closeModal={closeModal}/>
         </Grid>
         <Grid item>
-          <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}><ShoppingCartIcon/></Paper>
+          {! open && <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}> <ShoppingCartIcon/></Paper>}
         </Grid>
       </Grid>
     </div>
