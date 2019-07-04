@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 
 import MoDal from '../components/Modal';
@@ -40,6 +40,12 @@ const useStyles = makeStyles (theme => ({
     position: 'absolute',
     right: '0',
   },
+  icon:{
+    background:'#2196f3',
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    
+  }
 }));
 
 export default function RecipeReviewCard({data}) {
@@ -99,21 +105,15 @@ export default function RecipeReviewCard({data}) {
       </Typography>
 
       <CardActions disableSpacing>
-        <IconButton aria-label="Add to favorites">
+        <IconButton aria-label="Add to favorites" className={classes.icon}>
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="Share">
+        <IconButton aria-label="Share" className={classes.icon}>
           <ShareIcon />
         </IconButton>
         <IconButton
-          className={clsx (classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="Show more"
-        >
-          <ExpandMoreIcon />
+         className={classes.icon}>
+          <ShoppingCart />
         </IconButton>
       </CardActions>
     </Card>
