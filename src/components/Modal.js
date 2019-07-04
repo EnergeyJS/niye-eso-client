@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   closeModalIcon: {
     float: "right",
     marginRight: theme.spacing(0),
-    marginTop: theme.spacing(0),
+    marginTop: '-1px',
     cursor: "pointer"
   },
   root: {
@@ -44,6 +44,13 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     maxWidth: "100%"
+  },
+  buttonPadding:{
+    paddingBottom:theme.spacing(5/2),
+    marginTop: '20px'
+  },
+  button:{
+    width: '40%'
   }
 }));
 
@@ -102,7 +109,7 @@ export default function SimpleModal({ open = false, closeModal, data = {} }) {
                   </Paper>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Paper style={{ boxShadow: "none" }}>
+                  <Paper style={{ boxShadow: "none",    padding: "10px !important" }}>
                     <h2>Onion</h2>
                     
                     <b>50৳</b> <br />
@@ -133,12 +140,11 @@ export default function SimpleModal({ open = false, closeModal, data = {} }) {
                         </Select>
                       </FormControl>
                     </Typography>
-                    <Typography style={{marginTop: '20px'}}>
+                    <Typography className={classes.buttonPadding}>
                       <Button
                         variant="contained"
                         color="primary"
-                        className={classes.button}
-                        style={{width: '40%'}}
+                        className={classes.button}                  
                       >
                         Add To Cart
                       </Button>
