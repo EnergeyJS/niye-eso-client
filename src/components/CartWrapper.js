@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCartTwoTone'
 
 import CartModal from '../components/menu/CartModal';
 
@@ -22,9 +23,10 @@ const useStyles = makeStyles (theme => ({
       position:'fixed',
       right:'-30px',
       top:"45%",
-      width:"auto",
+      width:"100px",
       height:'auto',
-      'z-index': '999'
+      'z-index': '999',
+      background:'rebeccapurple'
   }
 }));
 
@@ -45,15 +47,10 @@ export default function CartWrapper() {
 
 
   return (
-    <Card className={classes.cart} >
-      <div className="discount"><span></span></div>
-      <CardHeader
-        avatar={
-         <IconButton onClick={() => openModal ()}>ShoppingCartIcon</IconButton>
-        }        
-      />      
+    <Card className={classes.cart} >      
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
+        <ShoppingCartIcon onClick={() => openModal ()}/>
         </Typography>
       </CardContent>
       <CartModal open={open} closeModal={closeModal}/>
