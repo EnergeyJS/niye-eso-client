@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     marginRight: theme.spacing(3),
     maxWidth:'30%',
-    display:'inline-block'
+    display:'inline-flex'
   },
   margin: {
     margin: theme.spacing(1),
