@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -11,11 +10,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Details from '@material-ui/icons/Details';
 import ShareIcon from '@material-ui/icons/Share';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import Comparisson from '@material-ui/icons/CompassCalibration';
 import Button from '@material-ui/core/Button';
 
-import MoDal from '../components/Modal';
+import MoDal from './Modal';
 
 const useStyles = makeStyles (theme => ({
   media: {
@@ -41,22 +41,25 @@ const useStyles = makeStyles (theme => ({
     right: '0',
   },
   icon:{
-    background:'#2196f3',
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    
+    background:theme.palette.primary.main,
+    //transform: 'rotate(0deg)',
+    margin: '0 5px',
+    float:'left',
+    background: 'linear-gradient(to left,'+ theme.palette.primary.main+' 50%, #2196f3 50%)',
+    backgroundSize: '200% 100%',
+    backgroundPosition:'right bottom',
+    transition:'all 1s ease',
+    '&:hover':{
+      backgroundPosition:'left bottom',
+    }
   }
 }));
 
 export default function RecipeReviewCard({data}) {
   const classes = useStyles ();
-  const [expanded, setExpanded] = useState (false);
   const [open, setOpen] = useState (false);
   const [modalData, setModalData] = useState (data);
 
-  function handleExpandClick () {
-    setExpanded (!expanded);
-  }
 
   function closeModal () {
     console.log ('Here clicked');
@@ -94,14 +97,6 @@ export default function RecipeReviewCard({data}) {
         <MoDal open={open} closeModal={closeModal} data={modalData} />
       </CardContent>
       <Typography align="center">
-        <Button
-          onClick={() => openModal (data)}
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Show Details
-        </Button>
       </Typography>
 
       <CardActions disableSpacing>
@@ -109,11 +104,13 @@ export default function RecipeReviewCard({data}) {
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="Share" className={classes.icon}>
-          <ShareIcon />
+          <Comparisson />
         </IconButton>
         <IconButton
-         className={classes.icon}>
-          <ShoppingCart />
+          onClick={() => openModal (data)}
+          className={classes.icon} style={{
+          marginLeft: 'auto'}}>
+          <Details />
         </IconButton>
       </CardActions>
     </Card>

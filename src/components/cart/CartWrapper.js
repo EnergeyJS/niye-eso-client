@@ -1,34 +1,33 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import {red} from '@material-ui/core/colors';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartTwoTone';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import CartModal from '../components/menu/CartModal';
+import CartModal from './CartModal';
 
 const useStyles = makeStyles (theme => ({
   root: {
-    right: '0',
+    right: '-13px',
     position: 'fixed',
     'z-index': '1223',
     top: '48vh',
   },
   paper: {
-    padding: theme.spacing (2),
+    // padding: theme.spacing (2),
     textAlign: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: 'transparent',
+    border:0,
+    boxShadow:'none'
+  },
+  cartIcon:{
+    color:theme.palette.primary.main,
+    fontSize:'100px'
   }
 }));
 
 export default function CartWrapper () {
   const classes = useStyles ();
-  const [expanded, setExpanded] = useState (false);
   const [open, setOpen] = useState (false);
 
   function closeModal () {
@@ -42,12 +41,12 @@ export default function CartWrapper () {
 
   return (
     <div className={classes.root}>
+          {! open && <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}> <ShoppingCartIcon color={"primary"} className={classes.cartIcon}/></Paper>}
       <Grid container>
         <Grid item xs style={{boxShadow: ''}}>
           <CartModal open={open} closeModal={closeModal}/>
         </Grid>
         <Grid item>
-          {! open && <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}> <ShoppingCartIcon/></Paper>}
         </Grid>
       </Grid>
     </div>

@@ -7,7 +7,7 @@ import Home from './views/Home';
 import MTStyle from './modules/index';
 
 import AppBar from './components/menu/AppBar';
-import Cart from './components/CartWrapper';
+import Cart from './components/cart/CartWrapper';
 import {messaging} from './init-fcm'
 
 const App = () => {
