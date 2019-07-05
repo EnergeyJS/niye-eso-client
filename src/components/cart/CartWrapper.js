@@ -4,14 +4,18 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCartTwoTone';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import CartModal from './CartModal';
+import CartList from './CartList';
 
 const useStyles = makeStyles (theme => ({
   root: {
     right: '-13px',
     position: 'fixed',
     'z-index': '1223',
-    top: '48vh',
+    top: '0',
+    bottom:'0',
+    display: 'flex !important',
+justifyContent: 'center !important',
+alignItems: 'center !important'
   },
   paper: {
     // padding: theme.spacing (2),
@@ -44,7 +48,7 @@ export default function CartWrapper () {
           {! open && <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}> <ShoppingCartIcon color={"primary"} className={classes.cartIcon}/></Paper>}
       <Grid container>
         <Grid item xs style={{boxShadow: ''}}>
-          <CartModal open={open} closeModal={closeModal}/>
+          <CartList open={open} closeModal={closeModal}/>
         </Grid>
         <Grid item>
         </Grid>
