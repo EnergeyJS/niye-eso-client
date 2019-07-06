@@ -12,22 +12,22 @@ const useStyles = makeStyles (theme => ({
     position: 'fixed',
     'z-index': '1223',
     top: '0',
-    bottom:'0',
+    bottom: '0',
     display: 'flex !important',
-justifyContent: 'center !important',
-alignItems: 'center !important'
+    justifyContent: 'center !important',
+    alignItems: 'center !important',
   },
   paper: {
     // padding: theme.spacing (2),
     textAlign: 'center',
     backgroundColor: 'transparent',
-    border:0,
-    boxShadow:'none'
+    border: 0,
+    boxShadow: 'none',
   },
-  cartIcon:{
-    color:theme.palette.primary.main,
-    fontSize:'100px'
-  }
+  cartIcon: {
+    color: theme.palette.primary.main,
+    fontSize: '100px',
+  },
 }));
 
 export default function CartWrapper () {
@@ -45,13 +45,20 @@ export default function CartWrapper () {
 
   return (
     <div className={classes.root}>
-          {! open && <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}> <ShoppingCartIcon color={"primary"} className={classes.cartIcon}/></Paper>}
+      {!open &&
+        <Paper
+          className={classes.paper}
+          onClick={openModal}
+          style={{cursor: 'pointer'}}
+        >
+          {' '}
+          <ShoppingCartIcon color={'primary'} className={classes.cartIcon} />
+        </Paper>}
       <Grid container>
         <Grid item xs style={{boxShadow: ''}}>
-          <CartList open={open} closeModal={closeModal}/>
+          <CartList open={open} closeModal={closeModal} />
         </Grid>
-        <Grid item>
-        </Grid>
+        <Grid item />
       </Grid>
     </div>
   );
