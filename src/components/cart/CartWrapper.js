@@ -27,6 +27,31 @@ alignItems: 'center !important'
   cartIcon:{
     color:theme.palette.primary.main,
     fontSize:'100px'
+  },
+  close: {
+    top: "-60px",
+    width:'200px',
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    right: "40%",
+    position: "absolute",
+    fontSize: "40px",
+    fontWeight: "900",
+    display: "block",
+    borderRadius: "60px 60px 0 0",
+    borderColor: "#ff0000b8",
+    textAlign: "center",
+    "&:hover": {
+      //  boxShadow: '-1px 1px 7px 1px #007bff',
+      pointer: "mouse",
+      backgroundColor: theme.palette.secondary.main
+    },
+    "&:after": {
+      content: "'X'"
+    }
+  },
+  item:{
+    position:'relative'
   }
 }));
 
@@ -45,9 +70,13 @@ export default function CartWrapper () {
 
   return (
     <div className={classes.root}>
-          {! open && <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}> <ShoppingCartIcon color={"primary"} className={classes.cartIcon}/></Paper>}
+          {! open && 
+          <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}> <ShoppingCartIcon color={"primary"} className={classes.cartIcon}/>
+          </Paper>
+          }
       <Grid container>
-        <Grid item xs style={{boxShadow: ''}}>
+        <Grid item xs style={{boxShadow: ''}} className={classes.item}>
+          {open &&<button className={classes.close} onClick={closeModal} />}
           <CartList open={open} closeModal={closeModal}/>
         </Grid>
         <Grid item>
