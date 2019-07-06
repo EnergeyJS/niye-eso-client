@@ -27,30 +27,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     textAlign: "left",
     boxShadow:'none',
-  },
-  close: {
-    top: "0",
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-    right: "3px",
-    position: "absolute",
-    fontSize: "10px",
-    fontWeight: "900",
-    display: "block",
-    borderRadius: "50%",
-    borderColor: "#ff0000b8",
-    textAlign: "center",
-    "&:hover": {
-      //  boxShadow: '-1px 1px 7px 1px #007bff',
-      pointer: "mouse",
-      backgroundColor: theme.palette.secondary.main
-    },
-    "&:after": {
-      content: "'X'"
-    },
-    icon:{
-      backgroundColor:theme.palette.primary.main
-    }
   }
 }));
 
@@ -59,8 +35,7 @@ export default function SimpleModal({ open = false, closeModal }) {
   return (
     <Card className={classes.root} >
       {open && (
-        <CardContent >
-          <button className={classes.close} onClick={closeModal} />
+        <CardContent >          
           <div className={classes.gridRoot}>
             <Grid container >
               <Grid item xs={1} style={{boxShadow:'none'}}>
