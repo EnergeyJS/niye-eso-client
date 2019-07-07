@@ -1,35 +1,37 @@
-import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import store from './store';
-import {Provider} from 'react-redux';
-import Counter from './views/Counter';
-import Home from './views/Home';
-import MTStyle from './modules/index';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import store from "./store";
+import { Provider } from "react-redux";
+import ProductDetails from "./views/ProductDetails";
+import Home from "./views/Home";
+import MTStyle from "./modules/index";
 
-import AppBar from './components/menu/AppBar';
-import Cart from './components/cart/CartWrapper';
-import {messaging} from './init-fcm'
+import AppBar from "./components/menu/AppBar";
+import Cart from "./components/cart/CartWrapper";
 
 const App = () => {
-  messaging.requestPermission()
-    .then(async function() {
-      const token = await messaging.getToken();
-      console.log(token);
-    })
-    .catch(function(err) {
-      console.log("Unable to get permission to notify.", err);
-    });
-  navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
-  const classes = MTStyle ();
+  const [widthClass, setWidthClass] = useState(null);
+  const classes = MTStyle();
+
+  function setClass() {
+    setWidthClass('adjustWidht');
+  }
+
+  function unSetClass(){
+    setWidthClass(null)
+  }
+
   return (
     <Provider store={store}>
       <Router>
         <div className={classes.root}>
           <AppBar />
-          <Cart/>
+            <Cart setClass={setClass} unSetClass={unSetClass}/>
           <main className={classes.content}>
-            <Route path="/" exact component={Home} />
-            <Route path="/counter" exact component={Counter} />
+            <div className={widthClass}>
+              <Route path="/" exact component={Home} />
+              <Route path="/detail" exact component={ProductDetails} />
+            </div>
           </main>
         </div>
       </Router>

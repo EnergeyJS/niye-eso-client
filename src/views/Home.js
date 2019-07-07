@@ -188,7 +188,6 @@ export default function home() {
   return (
     <div>
         {body.map((item, index)=> <Card key={index} data={item}/>)}
-        
     </div>
   );
 }
