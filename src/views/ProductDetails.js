@@ -1,10 +1,12 @@
 import React from 'react';
-import Card from '../components/Card'
+import Card from '../components/dataDisplay/Card'
 
 
 const Counter = () => {
     return (
-      <Card/>
+      <div>
+        Product Detail Page
+      </div>
     );
   };
 
