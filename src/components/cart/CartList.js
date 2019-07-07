@@ -1,7 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { Grid, ButtonGroup } from "@material-ui/core";
+import { Grid, Paper, Card, CardContent } from "@material-ui/core";
+import Increase from "@material-ui/icons/KeyboardArrowUp";
+import Decrease from "@material-ui/icons/KeyboardArrowDown";
 const useStyles = makeStyles(theme => ({
   root: {
     right: "14px",
@@ -36,7 +38,32 @@ export default function SimpleModal({ open = false, closeModal }) {
           Close
         </Button>
       </div>
-      <div />
+      <div>
+        <CardContent >          
+          <div className={classes.gridRoot}>
+            <Grid container >
+              <Grid item xs={3}>
+                <Paper className={classes.item}>
+                  <img
+                    src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
+                    style={{ width: "70px" }}
+                    alt=""
+                  />
+                </Paper>
+              </Grid>
+              <Grid item xs={4}>
+                <Paper className={classes.itemDescription}>Lorem Ipsum</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.item}>3</Paper>
+              </Grid>
+              <Grid item xs={1}>
+                
+              </Grid>
+            </Grid>                       
+          </div>
+        </CardContent>
+      </div>
       <div />
       <div
         style={{
