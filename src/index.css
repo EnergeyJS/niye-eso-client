@@ -40,5 +40,5 @@ code {
   padding: 0px !important;
 }
 .adjustWidht{
-  transform: translateX(-300px);
+  width: 80%;
 }
