@@ -19,7 +19,7 @@ const useStyles = makeStyles (theme => ({
     textAlign: 'center',
     backgroundColor: 'transparent',
     border: 0,
-    boxShadow: 'none',
+    boxShadow: 'none'
   },
   cartIcon: {
     color: theme.palette.primary.main,
