@@ -39,30 +39,24 @@ export default function SimpleModal({ open = false, closeModal }) {
         </Button>
       </div>
       <div>
-        <CardContent >          
-          <div className={classes.gridRoot}>
             <Grid container >
               <Grid item xs={3}>
-                <Paper className={classes.item}>
                   <img
                     src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
                     style={{ width: "70px" }}
                     alt=""
                   />
-                </Paper>
               </Grid>
               <Grid item xs={4}>
-                <Paper className={classes.itemDescription}>Lorem Ipsum</Paper>
+                Lorem Ipsum
               </Grid>
               <Grid item xs={3}>
-                <Paper className={classes.item}>3</Paper>
+                3
               </Grid>
               <Grid item xs={1}>
-                
+                4
               </Grid>
             </Grid>                       
-          </div>
-        </CardContent>
       </div>
       <div />
       <div
