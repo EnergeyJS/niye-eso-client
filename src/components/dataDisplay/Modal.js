@@ -8,7 +8,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
-import { Box } from "@material-ui/core";
 
 function getModalStyle() {
   const top = 50;
@@ -54,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleModal({ open = false, closeModal, data = {} }) {
+export default function SimpleModal({ open = false, closeModal }) {
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = useState(getModalStyle);
 
