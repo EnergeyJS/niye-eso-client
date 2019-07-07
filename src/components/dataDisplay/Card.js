@@ -11,9 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Details from '@material-ui/icons/Details';
-import ShareIcon from '@material-ui/icons/Share';
 import Comparisson from '@material-ui/icons/CompassCalibration';
-import Button from '@material-ui/core/Button';
 
 import MoDal from './Modal';
 
@@ -41,8 +39,6 @@ const useStyles = makeStyles (theme => ({
     right: '0',
   },
   icon:{
-    background:theme.palette.primary.main,
-    //transform: 'rotate(0deg)',
     margin: '0 5px',
     float:'left',
     background: 'linear-gradient(to left,'+ theme.palette.primary.main+' 50%, #2196f3 50%)',
@@ -62,12 +58,10 @@ export default function RecipeReviewCard({data}) {
 
 
   function closeModal () {
-    console.log ('Here clicked');
     setOpen (false);
   }
 
   function openModal (modalData) {
-    console.log ('Open modal');
     setOpen (true);
     setModalData (modalData);
   }

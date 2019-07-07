@@ -10,12 +10,9 @@ const useStyles = makeStyles (theme => ({
   root: {
     right: '-13px',
     position: 'fixed',
-    'z-index': '1223',
-    top: '0',
-    bottom: '0',
-    display: 'flex !important',
-    justifyContent: 'center !important',
-    alignItems: 'center !important',
+    top: '64px',
+    bottom: 0,
+    backgroundColor: 'blue'
   },
   paper: {
     // padding: theme.spacing (2),
@@ -28,32 +25,6 @@ const useStyles = makeStyles (theme => ({
     color: theme.palette.primary.main,
     fontSize: '100px',
   },
-  cartIcon:{
-    color:theme.palette.primary.main,
-    fontSize:'100px'
-  },
-  close: {
-    top: "-60px",
-    width:'200px',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-    right: "40%",
-    position: "absolute",
-    fontSize: "40px",
-    fontWeight: "900",
-    display: "block",
-    borderRadius: "60px 60px 0 0",
-    borderColor: "#ff0000b8",
-    textAlign: "center",
-    "&:hover": {
-      //  boxShadow: '-1px 1px 7px 1px #007bff',
-      pointer: "mouse",
-      backgroundColor: theme.palette.secondary.main
-    },
-    "&:after": {
-      content: "'X'"
-    }
-  },
   item:{
     position:'relative'
   }
@@ -64,7 +35,6 @@ export default function CartWrapper () {
   const [open, setOpen] = useState (false);
 
   function closeModal () {
-    console.log ('Here clicked');
     setOpen (false);
   }
 
@@ -78,15 +48,9 @@ export default function CartWrapper () {
           <Paper className={classes.paper} onClick={openModal} style={{cursor: 'pointer'}}> <ShoppingCartIcon color={"primary"} className={classes.cartIcon}/>
           </Paper>
           }
-      <Grid container>
-        <Grid item xs style={{boxShadow: ''}} className={classes.item}>
-          {open &&<button className={classes.close} onClick={closeModal} />}
+      <div>
           <CartList open={open} closeModal={closeModal}/>
-        </Grid>
-        <Grid item>
-        </Grid>
-        <Grid item />
-      </Grid>
+      </div>
     </div>
   );
 }
