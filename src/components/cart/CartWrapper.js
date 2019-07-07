@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCartTwoTone";
 import Paper from "@material-ui/core/Paper";
 import CartList from "./CartList";
 
