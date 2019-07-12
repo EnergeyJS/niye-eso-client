@@ -57,7 +57,7 @@ export default function RecipeReviewCard({data}) {
   const [modalData, setModalData] = useState (data);
 
 
-  function closeModal () {
+  const closeModal = () =>{
     setOpen (false);
   }
 
