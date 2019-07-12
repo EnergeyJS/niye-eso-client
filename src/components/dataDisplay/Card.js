@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -8,14 +8,14 @@ import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {red} from '@material-ui/core/colors';
+import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Details from '@material-ui/icons/Details';
 import Comparisson from '@material-ui/icons/CompassCalibration';
 
 import MoDal from './Modal';
 
-const useStyles = makeStyles (theme => ({
+const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -23,7 +23,7 @@ const useStyles = makeStyles (theme => ({
   expand: {
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
-    transition: theme.transitions.create ('transform', {
+    transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
   },
@@ -38,43 +38,43 @@ const useStyles = makeStyles (theme => ({
     position: 'absolute',
     right: '0',
   },
-  icon:{
+  icon: {
     margin: '0 5px',
-    float:'left',
-    background: 'linear-gradient(to left,'+ theme.palette.primary.main+' 50%, #2196f3 50%)',
+    float: 'left',
+    background: `linear-gradient(to left,${theme.palette.primary.main} 50%, #2196f3 50%)`,
     backgroundSize: '200% 100%',
-    backgroundPosition:'right bottom',
-    transition:'all 1s ease',
-    '&:hover':{
-      backgroundPosition:'left bottom',
+    backgroundPosition: 'right bottom',
+    transition: 'all 1s ease',
+    '&:hover': {
+      backgroundPosition: 'left bottom',
     }
   }
 }));
 
-export default function RecipeReviewCard({data}) {
-  const classes = useStyles ();
-  const [open, setOpen] = useState (false);
-  const [modalData, setModalData] = useState (data);
+export default function RecipeReviewCard({ data }) {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [modalData, setModalData] = useState(data);
 
 
-  function closeModal () {
-    setOpen (false);
+  function closeModal() {
+    setOpen(false);
   }
 
-  function openModal (modalData) {
-    setOpen (true);
-    setModalData (modalData);
+  function openModal(modalData) {
+    setOpen(true);
+    setModalData(modalData);
   }
 
   return (
     <Card className={classes.card}>
       <div className="discount"><span>{data.discount}</span></div>
       <CardHeader
-        avatar={
+        avatar={(
           <Avatar aria-label="Recipe" className={classes.avatar}>
             R
           </Avatar>
-        }
+)}
         title={data.name}
         subheader={data.date}
       />
@@ -90,8 +90,7 @@ export default function RecipeReviewCard({data}) {
         <hr />
         <MoDal open={open} closeModal={closeModal} data={modalData} />
       </CardContent>
-      <Typography align="center">
-      </Typography>
+      <Typography align="center" />
 
       <CardActions disableSpacing>
         <IconButton aria-label="Add to favorites" className={classes.icon}>
@@ -101,9 +100,10 @@ export default function RecipeReviewCard({data}) {
           <Comparisson />
         </IconButton>
         <IconButton
-          onClick={() => openModal (data)}
-          className={classes.icon} style={{
-          marginLeft: 'auto'}}>
+          onClick={() => openModal(data)}
+          className={classes.icon}
+          style={{ marginLeft: 'auto' }}
+        >
           <Details />
         </IconButton>
       </CardActions>
