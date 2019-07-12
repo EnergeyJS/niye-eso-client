@@ -4,6 +4,7 @@ import store from './store';
 import {Provider} from 'react-redux';
 import Counter from './views/Counter';
 import Home from './views/Home';
+import Products from './views/Products';
 import MTStyle from './modules/index';
 
 import AppBar from './components/menu/AppBar';
@@ -30,6 +31,7 @@ const App = () => {
           <main className={classes.content}>
             <Route path="/" exact component={Home} />
             <Route path="/counter" exact component={Counter} />
+            <Route path="/products" exact component={Products} />
           </main>
         </div>
       </Router>

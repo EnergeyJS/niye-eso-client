@@ -8,11 +8,12 @@ import CartList from './CartList';
 
 const useStyles = makeStyles (theme => ({
   root: {
-    right: '-13px',
+    right: '-3vh',
     position: 'fixed',
     'z-index': '1223',
-    top: '0',
-    bottom: '0',
+    top: '40vh',
+    height: '0',
+    width:'auto',
     display: 'flex !important',
     justifyContent: 'center !important',
     alignItems: 'center !important',
@@ -27,10 +28,6 @@ const useStyles = makeStyles (theme => ({
   cartIcon: {
     color: theme.palette.primary.main,
     fontSize: '100px',
-  },
-  cartIcon:{
-    color:theme.palette.primary.main,
-    fontSize:'100px'
   },
   close: {
     top: "-60px",

@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Increase from "@material-ui/icons/KeyboardArrowUp";
 import Decrease from "@material-ui/icons/KeyboardArrowDown";
-import { IconButton } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
   root: {
     right: "14px",
@@ -30,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleModal({ open = false, closeModal }) {
+export default function SimpleModal({ open = false }) {
   const classes = useStyles();
   return (
     <Card className={classes.root} >
@@ -51,6 +50,7 @@ export default function SimpleModal({ open = false, closeModal }) {
                   <img
                     src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
                     style={{ width: "70px" }}
+                    alt="Product"
                   />
                 </Paper>
               </Grid>
@@ -80,6 +80,7 @@ export default function SimpleModal({ open = false, closeModal }) {
                   <img
                     src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
                     style={{ width: "70px" }}
+                    alt="Product"
                   />
                 </Paper>
               </Grid>

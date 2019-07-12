@@ -8,6 +8,7 @@ export default createMuiTheme({
     main:  '#663399',
     dark: '#002884',
     contrastText: '#fff',
+    overlay:'rgba(102, 51, 153, 0.73)'
   },
   secondary: {
     light: '#ff7961',
