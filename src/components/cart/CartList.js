@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleModal({ open = false }) {
+export default function SimpleModal({ open = false, closeModal }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>

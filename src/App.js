@@ -29,9 +29,10 @@ const App = () => {
           <AppBar />
           <Cart setClass={setClass} unSetClass={unSetClass} />
           <main className={classes.content}>
-            <Route path="/" exact component={Home} />
-            <Route path="/counter" exact component={Counter} />
-            <Route path="/products" exact component={Products} />
+            <div className={widthClass}>
+              <Route path="/" exact component={Home} />
+              <Route path="/detail" exact component={ProductDetails} />
+            </div>
           </main>
         </div>
       </Router>
