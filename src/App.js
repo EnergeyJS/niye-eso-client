@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import store from "./store";
-import { Provider } from "react-redux";
-import ProductDetails from "./views/ProductDetails";
-import Home from "./views/Home";
-import MTStyle from "./modules/index";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
+import ProductDetails from './views/ProductDetails';
+import Home from './views/Home';
+import Products from './views/Products';
+import MTStyle from './modules/index';
 
-import AppBar from "./components/menu/AppBar";
-import Cart from "./components/cart/CartWrapper";
+import AppBar from './components/menu/AppBar';
+import Cart from './components/cart/CartWrapper';
 
 const App = () => {
   const [widthClass, setWidthClass] = useState(null);
@@ -17,8 +18,8 @@ const App = () => {
     setWidthClass('adjustWidht');
   }
 
-  function unSetClass(){
-    setWidthClass(null)
+  function unSetClass() {
+    setWidthClass(null);
   }
 
   return (
@@ -26,7 +27,7 @@ const App = () => {
       <Router>
         <div className={classes.root}>
           <AppBar />
-          <Cart setClass={setClass} unSetClass={unSetClass}/>
+          <Cart setClass={setClass} unSetClass={unSetClass} />
           <main className={classes.content}>
             <div className={widthClass}>
               <Route path="/" exact component={Home} />
