@@ -268,25 +268,20 @@ export default function appBar() {
             {
               menu: "Spam",
               icon: <Drafts />,
-              subItems: [
-                "Diapers2 & Wipes",
-                "Feeders",
-                "Fooding",
-                "Bath & Skincare"
-              ],
+              subItems: [],
               state: expandSpam,
               updateState: (expandSpam)=>setExpandSpam(!expandSpam)
             }
           ].map((item, index) => (
             <div>
-              <ListItem button onClick={e => item.updateState(item.state)}>
+              <ListItem button onClick={e => {item.updateState(item.state); !item.state && Array.isArray(item.subItems) && item.subItems.length && setOpen(true)}}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.menu} />
                 {item.state ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
               <Collapse in={item.state} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  {item.subItems.map(item => (
+                  {Array.isArray(item.subItems) && item.subItems.map(item => (
                     <ListItem button className={classes.nested}>
                       <ListItemIcon>{item.icon}</ListItemIcon>
                       <ListItemText primary={item} />
