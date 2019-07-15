@@ -1,7 +1,7 @@
-/* eslint-disable*/
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -35,7 +35,7 @@ import Trash from '@material-ui/icons/RestoreFromTrash';
 import Drafts from '@material-ui/icons/Drafts';
 import MTStyle from '../../modules/index';
 
-export default function appBar() {
+export default function Appbar() {
   const classes = MTStyle();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -251,7 +251,7 @@ export default function appBar() {
                 'Bath & Skincare',
               ],
               state: expandBabyCare,
-              updateState: expandBabyCare => setExpandBabyCare(!expandBabyCare),
+              updateState: expandBbyCare => setExpandBabyCare(!expandBbyCare),
             },
             {
               menu: 'Trash',
@@ -263,19 +263,20 @@ export default function appBar() {
                 'Bath & Skincare',
               ],
               state: expandTrash,
-              updateState: expandTrash => setExpandTrash(!expandTrash),
+              updateState: expandTrsh => setExpandTrash(!expandTrsh),
             },
             {
               menu: 'Spam',
               icon: <Drafts />,
               subItems: [],
               state: expandSpam,
-              updateState: expandSpam => setExpandSpam(!expandSpam),
+              updateState: expandSpm => setExpandSpam(!expandSpm),
             },
-          ].map((item, index) => (
-            <div>
-              <ListItem button onClick={(e) => {
+          // eslint-disable-next-line react/jsx-key
+          ].map((item, indx) => <div>
+              <ListItem key={indx} button onClick={() => {
                 item.updateState(item.state);
+                // eslint-disable-next-line no-unused-expressions
                 !item.state && Array.isArray(item.subItems) && item.subItems.length && setOpen(true);
               }}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
@@ -284,16 +285,16 @@ export default function appBar() {
               </ListItem>
               <Collapse in={item.state} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  {Array.isArray(item.subItems) && item.subItems.map(item => (
-                    <ListItem button className={classes.nested}>
-                      <ListItemIcon>{item.icon}</ListItemIcon>
+                  {Array.isArray(item.subItems) && item.subItems.map((subItem, index) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <ListItem key={index} button className={classes.nested}>
+                      <ListItemIcon>{subItem.icon}</ListItemIcon>
                       <ListItemText primary={item} />
                     </ListItem>
                   ))}
                 </List>
               </Collapse>
-            </div>
-          ))}
+            </div>)}
         </List>
       </Drawer>
     </div>

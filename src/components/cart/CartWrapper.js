@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CartWrapper({ setClass, unSetClass }) { // eslint-disable-line react/prop-types
+export default function CartWrapper({ setClass, unSetClass }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 

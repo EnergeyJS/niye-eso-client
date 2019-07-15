@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -34,7 +33,6 @@ const useStyles = makeStyles(theme => ({
     right: '0',
   },
   icon: {
-    background: theme.palette.primary.main,
     transform: 'rotate(0deg)',
     margin: '0 5px',
     float: 'left',
@@ -88,6 +86,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// eslint-disable-next-line react/prop-types
 export default function RecipeReviewCard({ data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -98,9 +97,9 @@ export default function RecipeReviewCard({ data }) {
     setOpen(false);
   };
 
-  const openModal = (modalData) => {
+  const openModal = (mdata) => {
     setOpen(true);
-    setModalData(modalData);
+    setModalData(mdata);
   };
 
   return (

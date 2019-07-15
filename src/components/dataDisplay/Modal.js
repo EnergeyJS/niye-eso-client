@@ -1,14 +1,13 @@
-/* eslint-disable*/
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Modal from "@material-ui/core/Modal";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
 
 function getModalStyle() {
   const top = 50;
@@ -17,41 +16,41 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`
+    transform: `translate(-${top}%, -${left}%)`,
   };
 }
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    position: "absolute",
-    width: "60vw",
+    position: 'absolute',
+    width: '60vw',
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(4),
-    outline: "none"
+    outline: 'none',
   },
   closeModalIcon: {
-    float: "right",
+    float: 'right',
     marginRight: theme.spacing(0),
     marginTop: '-1px',
-    cursor: "pointer"
+    cursor: 'pointer',
   },
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   innerPaper: {
-    textAlign: "center"
+    textAlign: 'center',
   },
   image: {
-    maxWidth: "100%"
+    maxWidth: '100%',
   },
-  buttonPadding:{
-    paddingBottom:theme.spacing(5/2),
-    marginTop: '20px'
+  buttonPadding: {
+    paddingBottom: theme.spacing(5 / 2),
+    marginTop: '20px',
   },
-  button:{
-    width: '40%'
-  }
+  button: {
+    width: '40%',
+  },
 }));
 
 export default function SimpleModal({ open = false, closeModal }) {
@@ -59,19 +58,19 @@ export default function SimpleModal({ open = false, closeModal }) {
   const [modalStyle] = useState(getModalStyle);
 
   const [values, setValues] = useState({
-    age: "",
-    name: "hai"
+    age: '',
+    name: 'hai',
   });
 
   function handleChange(event) {
     setValues(oldValues => ({
       ...oldValues,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
   }
 
   const classes = useStyles();
-  let classModal = classes.paper;
+  const classModal = classes.paper;
   return (
     <div>
       <Modal
@@ -90,7 +89,9 @@ export default function SimpleModal({ open = false, closeModal }) {
               height="36"
               viewBox="0 0 24 24"
             >
-              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+              <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+               />
             </svg>
           </Typography>
           <Typography variant="subtitle1" id="simple-modal-description">
@@ -99,7 +100,7 @@ export default function SimpleModal({ open = false, closeModal }) {
                 <Grid item xs={12} sm={6}>
                   <Paper
                     className={classes.innerPaper}
-                    style={{ boxShadow: "none" }}
+                    style={{ boxShadow: 'none' }}
                   >
                     <img
                       className={`${classes.image} image`}
@@ -109,21 +110,18 @@ export default function SimpleModal({ open = false, closeModal }) {
                   </Paper>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Paper style={{ boxShadow: "none",    padding: "10px !important" }}>
+                  <Paper style={{ boxShadow: 'none', padding: '10px !important' }}>
                     <h2>Onion</h2>
-                    
+
                     <b>50৳</b> <br />
-                    <Typography style={{marginBottom: '10px'}}>
-                      {" "}
+                    <Typography style={{ marginBottom: '10px' }}>
+                      {' '}
                       Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book.
+                      typesetting industry. Lorem
                     </Typography>
-                    <Typography style={{ display: 'inline'}}>
-                      Variant<span style={{ color: "red" }}>*</span>
-                      <FormControl className={classes.formControl} style={{marginLeft: '10px'}}>
+                    <Typography style={{ display: 'inline' }}>
+                      Variant<span style={{ color: 'red' }}>*</span>
+                      <FormControl className={classes.formControl} style={{ marginLeft: '10px' }}>
                         <Select
                           value={values.age}
                           onChange={handleChange}
@@ -144,7 +142,7 @@ export default function SimpleModal({ open = false, closeModal }) {
                       <Button
                         variant="contained"
                         color="primary"
-                        className={classes.button}                  
+                        className={classes.button}
                       >
                         Add To Cart
                       </Button>

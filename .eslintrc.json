@@ -9,6 +9,7 @@
     "max-len": [2, 120],
     "linebreak-style": 0,
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off"
   }
  }
