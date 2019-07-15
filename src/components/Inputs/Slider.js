@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -6,8 +7,8 @@ import Slider from '@material-ui/lab/Slider';
 const useStyles = makeStyles({
   root: {
     maxWidth: '30%',
-    display:'inline-block',
-    marginRight:'5%'
+    display: 'inline-block',
+    marginRight: '5%',
   },
 });
 

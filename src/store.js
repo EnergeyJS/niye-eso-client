@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import { createStore, compose } from 'redux';
 
 const initialState = {

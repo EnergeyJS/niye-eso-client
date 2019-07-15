@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store';
-import ProductDetails from './views/ProductDetails';
-import Home from './views/Home';
-import Products from './views/Products';
-import MTStyle from './modules/index';
+/* eslint-disable*/
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import ProductDetails from "./views/ProductDetails";
+import Home from "./views/Home";
+import Products from "./views/Products";
+import MTStyle from "./modules/index";
 
-import AppBar from './components/menu/AppBar';
-import Cart from './components/cart/CartWrapper';
+import AppBar from "./components/menu/AppBar";
+import Cart from "./components/cart/CartWrapper";
 
 const App = () => {
   const [widthClass, setWidthClass] = useState(null);
   const classes = MTStyle();
 
-  function setClass() { 
-    setWidthClass('adjustWidht');
+  function setClass() {
+    setWidthClass("adjustWidht");
   }
 
   function unSetClass() {

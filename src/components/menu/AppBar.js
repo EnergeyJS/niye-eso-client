@@ -1,39 +1,42 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from "react";
-import Typography from "@material-ui/core/Typography";
-import MTStyle from "../../modules/index";
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 
-import clsx from "clsx";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import MailIcon from "@material-ui/icons/Mail";
-import SearchIcon from "@material-ui/icons/Search";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MoreIcon from "@material-ui/icons/MoreVert";
+import clsx from 'clsx';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import MailIcon from '@material-ui/icons/Mail';
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
+import Badge from '@material-ui/core/Badge';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MoreIcon from '@material-ui/icons/MoreVert';
 
-import { useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import Collapse from "@material-ui/core/Collapse";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import ChildCare from "@material-ui/icons/ChildCare";
-import Trash from "@material-ui/icons/RestoreFromTrash";
-import Drafts from '@material-ui/icons/Drafts'
+import { useTheme } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import ChildCare from '@material-ui/icons/ChildCare';
+import Trash from '@material-ui/icons/RestoreFromTrash';
+import Drafts from '@material-ui/icons/Drafts';
+import MTStyle from '../../modules/index';
 
 export default function appBar() {
   const classes = MTStyle();
@@ -65,14 +68,14 @@ export default function appBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   }
 
-  const menuId = "primary-search-account-menu";
+  const menuId = 'primary-search-account-menu';
   const renderMenu = (
-    <Menu
+   <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -81,14 +84,14 @@ export default function appBar() {
     </Menu>
   );
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
+  const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
@@ -135,7 +138,7 @@ export default function appBar() {
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
+          [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
@@ -145,7 +148,7 @@ export default function appBar() {
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButtonAppBar, {
-              [classes.hide]: open
+              [classes.hide]: open,
             })}
           >
             <MenuIcon />
@@ -161,9 +164,9 @@ export default function appBar() {
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
-                input: classes.inputInput
+                input: classes.inputInput,
               }}
-              inputProps={{ "aria-label": "Search" }}
+              inputProps={{ 'aria-label': 'Search' }}
             />
           </div>
           <div className={classes.grow} />
@@ -208,19 +211,19 @@ export default function appBar() {
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
+          [classes.drawerClose]: !open,
         })}
         classes={{
           paper: clsx({
             [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })
+            [classes.drawerClose]: !open,
+          }),
         }}
         open={open}
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
+            {theme.direction === 'rtl' ? (
               <ChevronRightIcon />
             ) : (
               <ChevronLeftIcon />
@@ -229,7 +232,7 @@ export default function appBar() {
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -242,39 +245,42 @@ export default function appBar() {
         <List>
           {[
             {
-              menu: "Baby Care",
+              menu: 'Baby Care',
               icon: <ChildCare />,
               subItems: [
-                "Diapers & Wipes",
-                "Feeders",
-                "Fooding",
-                "Bath & Skincare"
+                'Diapers & Wipes',
+                'Feeders',
+                'Fooding',
+                'Bath & Skincare',
               ],
               state: expandBabyCare,
-              updateState: (expandBabyCare)=>setExpandBabyCare(!expandBabyCare)
+              updateState: expandBabyCare => setExpandBabyCare(!expandBabyCare),
             },
             {
-              menu: "Trash",
+              menu: 'Trash',
               icon: <Trash />,
               subItems: [
-                "Diapers2 & Wipes",
-                "Feeders",
-                "Fooding",
-                "Bath & Skincare"
+                'Diapers2 & Wipes',
+                'Feeders',
+                'Fooding',
+                'Bath & Skincare',
               ],
               state: expandTrash,
-              updateState: (expandTrash)=>setExpandTrash(!expandTrash)
+              updateState: expandTrash => setExpandTrash(!expandTrash),
             },
             {
-              menu: "Spam",
+              menu: 'Spam',
               icon: <Drafts />,
               subItems: [],
               state: expandSpam,
-              updateState: (expandSpam)=>setExpandSpam(!expandSpam)
-            }
+              updateState: expandSpam => setExpandSpam(!expandSpam),
+            },
           ].map((item, index) => (
             <div>
-              <ListItem button onClick={e => {item.updateState(item.state); !item.state && Array.isArray(item.subItems) && item.subItems.length && setOpen(true)}}>
+              <ListItem button onClick={(e) => {
+                item.updateState(item.state);
+                !item.state && Array.isArray(item.subItems) && item.subItems.length && setOpen(true);
+              }}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.menu} />
                 {item.state ? <ExpandLess /> : <ExpandMore />}

@@ -1,3 +1,6 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-dupe-keys */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -6,25 +9,25 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {red} from '@material-ui/core/colors';
+import { red } from '@material-ui/core/colors';
 import ShoppingBag from '@material-ui/icons/ShoppingBasket';
 import Button from '@material-ui/core/Button';
 import MoDal from './Modal';
 
-const useStyles = makeStyles (theme => ({
-  card:{
-    height:'42vh',
-    width:'230px',
-    margin:'1.8vw 2vw',
-    textAlign:"center",
-    '&:hover>.CardContentOverly':{
-        display:'flex'
-    }
+const useStyles = makeStyles(theme => ({
+  card: {
+    height: '42vh',
+    width: '230px',
+    margin: '1.8vw 2vw',
+    textAlign: 'center',
+    '&:hover>.CardContentOverly': {
+      display: 'flex',
+    },
 
   },
   media: {
     height: 0,
-    width:'auto',
+    width: 'auto',
     paddingTop: '56.25%', // 16:9
   },
   discount: {
@@ -32,59 +35,59 @@ const useStyles = makeStyles (theme => ({
     position: 'absolute',
     right: '0',
   },
-  icon:{    
-    background:theme.palette.primary.main,
-    transform: 'rotate(0deg)',    
+  icon: {
+    background: theme.palette.primary.main,
+    transform: 'rotate(0deg)',
     margin: '0 5px',
-    float:'left',
-    background: 'linear-gradient(to left,'+ theme.palette.primary.main+' 50%, '+ theme.palette.secondary.light+' 50%)',
+    float: 'left',
+    background: `linear-gradient(to left,${theme.palette.primary.main} 50%, ${theme.palette.secondary.light} 50%)`,
     backgroundSize: '200% 100%',
     backgroundPosition: 'right bottom',
     transition: 'all 1s ease',
     '&:hover': {
       backgroundPosition: 'left bottom',
-    }
+    },
   },
-  description:{
-    height:'3vh',
-    overflow:'hidden'
+  description: {
+    height: '3vh',
+    overflow: 'hidden',
   },
-  amount:{
-    height:'2vh',
-    margin:'2px 0',
-    textAlign:'center'
+  amount: {
+    height: '2vh',
+    margin: '2px 0',
+    textAlign: 'center',
   },
-  price:{
-    height:'2vh',
-    margin:'2px 0',
-    textAlign:'center'
+  price: {
+    height: '2vh',
+    margin: '2px 0',
+    textAlign: 'center',
   },
-  CardActions:{
-    display:'inline-block',
+  CardActions: {
+    display: 'inline-block',
   },
-  CardContentOverly:{
-    position:'absolute',
-    top:'0',
-    left:'0',
-    display:'none',
-    background:theme.palette.primary.overlay,
-    height:'inherit',
-    width:'inherit'
+  CardContentOverly: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    display: 'none',
+    background: theme.palette.primary.overlay,
+    height: 'inherit',
+    width: 'inherit',
   },
-  CardContentOverlyText:{
-    margin:'auto',
-    lineHeight:'3',
-    '&>button':{
-      color:theme.palette.primary.contrastText,
-      boxShadow: '1px 4px 6px black'
-    }
+  CardContentOverlyText: {
+    margin: 'auto',
+    lineHeight: '3',
+    '&>button': {
+      color: theme.palette.primary.contrastText,
+      boxShadow: '1px 4px 6px black',
+    },
   },
-  buttonIcon:{
+  buttonIcon: {
     margin: '0 5px 0 0',
     padding: '0 5px 0 0',
     display: 'block',
     borderRight: '1px dotted',
-  }
+  },
 }));
 
 export default function RecipeReviewCard({ data }) {
@@ -93,20 +96,18 @@ export default function RecipeReviewCard({ data }) {
   const [modalData, setModalData] = useState(data);
 
 
-  const closeModal= ()=> {
-    console.log ('Here clicked');
-    setOpen (false);
-  }
+  const closeModal = () => {
+    setOpen(false);
+  };
 
-  const openModal =(modalData)=> {
-    console.log ('Open modal');
-    setOpen (true);
-    setModalData (modalData);
-  }
+  const openModal = (modalData) => {
+    setOpen(true);
+    setModalData(modalData);
+  };
 
   return (
     <Card className={classes.card}>
-      <div className="discount"><span>{data.discount}</span></div>      
+      <div className="discount"><span>{data.discount}</span></div>
       <CardMedia
         className={classes.media}
         image="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
@@ -124,20 +125,20 @@ export default function RecipeReviewCard({ data }) {
         </Typography>
         <MoDal open={open} closeModal={closeModal} data={modalData} />
       </CardContent>
-        <CardContent className={classes.CardContentOverly+' CardContentOverly'}>
+        <CardContent className={`${classes.CardContentOverly} CardContentOverly`}>
         <Typography variant="body2" className={classes.CardContentOverlyText}>
-        <IconButton aria-label="Details" className={classes.icon} 
-        onClick={() => openModal (data)}>
+        <IconButton aria-label="Details" className={classes.icon}
+        onClick={() => openModal(data)}>
           Details
         </IconButton>
         </Typography>
       </CardContent>
       <CardActions disableSpacing className={classes.CardActions}>
-        {/* 
+        {/*
         <IconButton aria-label="Share" className={classes.icon}>
           <Comparisson />
         </IconButton> */}
-        <Button          
+        <Button
           className={classes.icon}>
           <span className={classes.buttonIcon}><ShoppingBag /></span>
           Add To Cart

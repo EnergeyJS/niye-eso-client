@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -9,7 +10,7 @@ const BootstrapInput = withStyles(theme => ({
   root: {
     'label + &': {
       marginTop: theme.spacing(3),
-      
+
     },
   },
   input: {
@@ -44,8 +45,8 @@ const BootstrapInput = withStyles(theme => ({
 const useStyles = makeStyles(theme => ({
   root: {
     marginRight: theme.spacing(3),
-    maxWidth:'30%',
-    display:'inline-flex'
+    maxWidth: '30%',
+    display: 'inline-flex',
   },
   margin: {
     margin: theme.spacing(1),
@@ -55,14 +56,14 @@ const useStyles = makeStyles(theme => ({
 export default function CustomizedSelects() {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
-  const handleChange = event => {
+  const handleChange = (event) => {
     setAge(event.target.value);
   };
   return (
     <form className={classes.root} autoComplete="off">
       <FormControl className={classes.margin}>
         <InputLabel htmlFor="age-customized-native-simple">Age</InputLabel>
-        <NativeSelect 
+        <NativeSelect
           value={age}
           onChange={handleChange}
           input={<BootstrapInput name="age" id="age-customized-native-simple" />}
