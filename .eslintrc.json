@@ -1,0 +1,21 @@
+{
+  "extends": ["airbnb-base"],
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false
+  },
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "no-underscore-dangle": 0,
+    "class-methods-use-this": ["off"],
+    "no-use-before-define": ["error", {
+      "functions": false,
+      "classes": false
+    }],
+    "max-len": [2, 120],
+    "consistent-return": ["off"],
+    "func-names": ["off"]
+  }
+ }

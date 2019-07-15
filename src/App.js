@@ -14,7 +14,7 @@ const App = () => {
   const [widthClass, setWidthClass] = useState(null);
   const classes = MTStyle();
 
-  function setClass() {
+  function setClass() { 
     setWidthClass('adjustWidht');
   }
 
