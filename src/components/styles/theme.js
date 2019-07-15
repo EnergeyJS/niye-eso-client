@@ -5,9 +5,10 @@ export default createMuiTheme({
   palette: {
     primary: {
     light: '#757ce8',
-    main:  '#2196f3',
+    main:  '#663399',
     dark: '#002884',
     contrastText: '#fff',
+    overlay:'rgba(102, 51, 153, 0.73)'
   },
   secondary: {
     light: '#ff7961',
@@ -28,7 +29,7 @@ export default createMuiTheme({
     MuiDrawer: {
         paper:{
           color:'white',
-          backgroundColor: '#2196f3'
+          backgroundColor: '#663399'
         }
       },
       MuiSvgIcon:{

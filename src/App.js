@@ -4,20 +4,34 @@ import store from './store';
 import {Provider} from 'react-redux';
 import Counter from './views/Counter';
 import Home from './views/Home';
+import Products from './views/Products';
 import MTStyle from './modules/index';
 
-import AppBar from './components/menu/appBar';
+import AppBar from './components/menu/AppBar';
+import Cart from './components/cart/CartWrapper';
+import {messaging} from './init-fcm'
 
 const App = () => {
+  messaging.requestPermission()
+    .then(async function() {
+      const token = await messaging.getToken();
+      console.log(token);
+    })
+    .catch(function(err) {
+      console.log("Unable to get permission to notify.", err);
+    });
+  navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
   const classes = MTStyle ();
   return (
     <Provider store={store}>
       <Router>
         <div className={classes.root}>
           <AppBar />
+          <Cart/>
           <main className={classes.content}>
             <Route path="/" exact component={Home} />
             <Route path="/counter" exact component={Counter} />
+            <Route path="/products" exact component={Products} />
           </main>
         </div>
       </Router>
