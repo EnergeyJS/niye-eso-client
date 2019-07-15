@@ -288,8 +288,8 @@ export default function Appbar() {
                   {Array.isArray(item.subItems) && item.subItems.map((subItem, index) => (
                     // eslint-disable-next-line react/jsx-key
                     <ListItem key={index} button className={classes.nested}>
-                      <ListItemIcon>{subItem.icon}</ListItemIcon>
-                      <ListItemText primary={item} />
+                      <ListItemIcon></ListItemIcon>
+                      <ListItemText primary={subItem} />
                     </ListItem>
                   ))}
                 </List>
