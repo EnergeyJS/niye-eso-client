@@ -1,4 +1,4 @@
-/* eslint-disable*/
+
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     right: '-3vh',
     position: 'fixed',
     top: '64px',
-    bottom: 0
+    bottom: 0,
   },
   paper: {
     textAlign: 'center',
@@ -18,22 +18,22 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     right: '0',
     top: '50%',
-    transform: 'translateY(-50%)'
+    transform: 'translateY(-50%)',
   },
   cartIcon: {
     color: theme.palette.primary.main,
-    fontSize: '100px'
+    fontSize: '100px',
   },
   cartContainer: {
     height: '100%',
     transition: 'all 3000ms',
     position: 'fixed',
     right: '0',
-    'z-index': 4
-  }
+    'z-index': 4,
+  },
 }));
 
-export default function CartWrapper({ setClass, unSetClass }) {
+export default function CartWrapper({ setClass, unSetClass }) { // eslint-disable-line react/prop-types
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
