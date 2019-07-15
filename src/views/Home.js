@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import React from "react";
 import Card from "../components/dataDisplay/Card";
 
@@ -187,8 +188,8 @@ export default function home() {
 
   return (
     <div>
+        <div>This is above the card</div>
         {body.map((item, index)=> <Card key={index} data={item}/>)}
-        
     </div>
   );
 }

@@ -1,5 +1,5 @@
+/* eslint-disable*/
 import React from "react";
-import clsx from 'clsx'
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -17,8 +17,8 @@ const useStyles = makeStyles(theme => ({
   container: {
     margin: '10vh',
     padding: '10vh',
-    display: "flex",
-    flexWrap: "wrap",
+    display: 'flex',
+    flexWrap: 'wrap',
     flexDirection:'column',
     alignItems:'center',
     boxShadow: '0 0 10px 0px '+theme.palette.primary.main
@@ -74,7 +74,7 @@ export default function TextFields() {
         onChange={handleChange("name")}
         margin="normal"
       />
-      <FormControl className={clsx(classes.margin, classes.textField)}>
+      <FormControl className={`classes.margin`, `classes.textField`}>
         <InputLabel htmlFor="adornment-password">Password</InputLabel>
         <Input
           id="adornment-password"
@@ -83,7 +83,8 @@ export default function TextFields() {
           onChange={handleChange('password')}
           endAdornment={
             <InputAdornment position="end">
-              <IconButton aria-label="Toggle password visibility" onClick={handleClickShowPassword} className={classes.checkbox}>
+              <IconButton aria-label="Toggle password visibility" 
+              onClick={handleClickShowPassword} className={classes.checkbox}>
                 {values.showPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>

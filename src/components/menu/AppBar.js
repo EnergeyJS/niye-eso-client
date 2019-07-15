@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import React from 'react';
+/* eslint-disable*/
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
-import MTStyle from '../../modules/index';
 
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
@@ -28,43 +27,52 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import ChildCare from '@material-ui/icons/ChildCare';
+import Trash from '@material-ui/icons/RestoreFromTrash';
+import Drafts from '@material-ui/icons/Drafts';
+import MTStyle from '../../modules/index';
 
-export default function appBar () {
-  const classes = MTStyle ();
+export default function appBar() {
+  const classes = MTStyle();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState (null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState (null);
+  const [open, setOpen] = useState(false);
+  const [expandBabyCare, setExpandBabyCare] = useState(false);
+  const [expandTrash, setExpandTrash] = useState(false);
+  const [expandSpam, setExpandSpam] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(false);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
-  const isMenuOpen = Boolean (anchorEl);
-  const isMobileMenuOpen = Boolean (mobileMoreAnchorEl);
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  function handleProfileMenuOpen (event) {
-    setAnchorEl (event.currentTarget);
+  function handleProfileMenuOpen(event) {
+    setAnchorEl(event.currentTarget);
   }
 
-  function handleMobileMenuClose () {
-    setMobileMoreAnchorEl (null);
+  function handleMobileMenuClose() {
+    setMobileMoreAnchorEl(null);
   }
 
-  function handleMenuClose () {
-    setAnchorEl (null);
-    handleMobileMenuClose ();
+  function handleMenuClose() {
+    setAnchorEl(null);
+    handleMobileMenuClose();
   }
 
-  function handleMobileMenuOpen (event) {
-    setMobileMoreAnchorEl (event.currentTarget);
+  function handleMobileMenuOpen(event) {
+    setMobileMoreAnchorEl(event.currentTarget);
   }
-
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-    <Menu
+   <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
       keepMounted
-      transformOrigin={{vertical: 'top', horizontal: 'right'}}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -77,10 +85,10 @@ export default function appBar () {
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{vertical: 'top', horizontal: 'right'}}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
@@ -124,21 +132,21 @@ export default function appBar () {
 
   return (
     <div>
-    <AppBar
+      <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
-          <IconButton           
+          <IconButton
             color="inherit"
-            aria-label="Open drawer"    
+            aria-label="Open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButtonAppBar, {
               [classes.hide]: open,
-            })}        
+            })}
           >
             <MenuIcon />
           </IconButton>
@@ -155,7 +163,7 @@ export default function appBar () {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              inputProps={{'aria-label': 'Search'}}
+              inputProps={{ 'aria-label': 'Search' }}
             />
           </div>
           <div className={classes.grow} />
@@ -212,25 +220,79 @@ export default function appBar () {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </div>
         <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+          {[
+            {
+              menu: 'Baby Care',
+              icon: <ChildCare />,
+              subItems: [
+                'Diapers & Wipes',
+                'Feeders',
+                'Fooding',
+                'Bath & Skincare',
+              ],
+              state: expandBabyCare,
+              updateState: expandBabyCare => setExpandBabyCare(!expandBabyCare),
+            },
+            {
+              menu: 'Trash',
+              icon: <Trash />,
+              subItems: [
+                'Diapers2 & Wipes',
+                'Feeders',
+                'Fooding',
+                'Bath & Skincare',
+              ],
+              state: expandTrash,
+              updateState: expandTrash => setExpandTrash(!expandTrash),
+            },
+            {
+              menu: 'Spam',
+              icon: <Drafts />,
+              subItems: [],
+              state: expandSpam,
+              updateState: expandSpam => setExpandSpam(!expandSpam),
+            },
+          ].map((item, index) => (
+            <div>
+              <ListItem button onClick={(e) => {
+                item.updateState(item.state);
+                !item.state && Array.isArray(item.subItems) && item.subItems.length && setOpen(true);
+              }}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.menu} />
+                {item.state ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={item.state} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {Array.isArray(item.subItems) && item.subItems.map(item => (
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Collapse>
+            </div>
           ))}
         </List>
       </Drawer>
