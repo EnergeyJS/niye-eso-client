@@ -1,7 +1,4 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-unused-vars */
+/* eslint-disable*/
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 

@@ -1,6 +1,4 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-dupe-keys */
-/* eslint-disable no-unused-vars */
+/* eslint-disable*/
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
