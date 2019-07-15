@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import Counter from './views/Counter';
 import Home from './views/Home';
 import Products from './views/Products';
+import signin from './views/auth/signin'
 import MTStyle from './modules/index';
 
 import AppBar from './components/menu/AppBar';
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="/" exact component={Home} />
             <Route path="/counter" exact component={Counter} />
             <Route path="/products" exact component={Products} />
+            <Route path="/signin" exact component={signin} />
           </main>
         </div>
       </Router>
