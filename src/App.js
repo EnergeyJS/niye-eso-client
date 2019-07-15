@@ -32,6 +32,7 @@ const App = () => {
             <div className={widthClass}>
               <Route path="/" exact component={Home} />
               <Route path="/detail" exact component={ProductDetails} />
+              <Route path="/Products" exact component={Products} />
             </div>
           </main>
         </div>
