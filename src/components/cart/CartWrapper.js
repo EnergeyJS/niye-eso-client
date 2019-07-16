@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     top: '64px',
     bottom: 0,
+    zIndex: 1,
   },
   paper: {
     textAlign: 'center',
