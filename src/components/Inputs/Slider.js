@@ -6,8 +6,8 @@ import Slider from '@material-ui/lab/Slider';
 const useStyles = makeStyles({
   root: {
     maxWidth: '30%',
-    display:'inline-block',
-    marginRight:'5%'
+    display: 'inline-block',
+    marginRight: '5%',
   },
 });
 

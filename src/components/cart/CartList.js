@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {
-  Grid
+  Grid,
 } from '@material-ui/core';
 import Increase from '@material-ui/icons/KeyboardArrowUp';
 import Decrease from '@material-ui/icons/KeyboardArrowDown';
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     transition: 'all 1s ease',
 
     position: 'fixed',
-    top: '55px'
+    top: '55px',
   },
   cartHeader: {
     fontSize: '15px',
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#e4e0e1',
     height: '60px',
     boxSizing: 'border-box',
-    padding: '10px 0 0 20px'
+    padding: '10px 0 0 20px',
   },
   cartProgress: {
     backgroundColor: '#7a7879',
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     float: 'left',
     position: 'relative',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
 
   },
   button: {
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     height: '60px',
     width: '30%',
     boxSizing: 'border-box',
-    padding: '10px 0 0 20px'
+    padding: '10px 0 0 20px',
   },
   cartCoupun: {
     position: 'fixed',
@@ -59,10 +59,11 @@ const useStyles = makeStyles(theme => ({
     width: '30%',
     boxSizing: 'border-box',
     border: '1px',
-  }
+  },
 }));
 
-export default function SimpleModal({ open = false, closeModal }) {
+// eslint-disable-next-line react/prop-types
+export default function SimpleModal({ closeModal }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -92,7 +93,7 @@ export default function SimpleModal({ open = false, closeModal }) {
 
               </span>
               <span style={{
-                color: '#fff', fontSize: '14px', marginRight: '10px', float: 'right'
+                color: '#fff', fontSize: '14px', marginRight: '10px', float: 'right',
               }}
               >
 ৳39
@@ -103,7 +104,7 @@ export default function SimpleModal({ open = false, closeModal }) {
 
         </div>
         <div style={{
-          height: '60px', width: '100%', backgroundColor: '#e4e0e1', boxSizing: 'border-box', border: '1px'
+          height: '60px', width: '100%', backgroundColor: '#e4e0e1', boxSizing: 'border-box', border: '1px',
         }}
         >
           <p style={{ textAlign: 'center' }}>Express Delivery</p>
@@ -145,14 +146,14 @@ export default function SimpleModal({ open = false, closeModal }) {
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
                 <span style={{
-                  color: '#AAA', fontSize: '14px'
+                  color: '#AAA', fontSize: '14px',
                 }}
                 >
 ৳39
 
                 </span>
                 <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor'
+                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
                 }}
                 >
 X
@@ -200,14 +201,14 @@ X
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
                 <span style={{
-                  color: '#AAA', fontSize: '14px'
+                  color: '#AAA', fontSize: '14px',
                 }}
                 >
 ৳39
 
                 </span>
                 <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor'
+                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
                 }}
                 >
 X
@@ -255,14 +256,14 @@ X
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
                 <span style={{
-                  color: '#AAA', fontSize: '14px'
+                  color: '#AAA', fontSize: '14px',
                 }}
                 >
 ৳39
 
                 </span>
                 <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor'
+                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
                 }}
                 >
 X
@@ -310,14 +311,14 @@ X
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
                 <span style={{
-                  color: '#AAA', fontSize: '14px'
+                  color: '#AAA', fontSize: '14px',
                 }}
                 >
 ৳39
 
                 </span>
                 <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor'
+                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
                 }}
                 >
 X
@@ -364,14 +365,14 @@ X
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
                 <span style={{
-                  color: '#AAA', fontSize: '14px'
+                  color: '#AAA', fontSize: '14px',
                 }}
                 >
 ৳39
 
                 </span>
                 <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor'
+                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
                 }}
                 >
 X
@@ -392,15 +393,15 @@ X
         <div className={classes.cartCoupun}>
 
           <Button style={{
-            width: '80%', color: 'black', fontSize: '11px', pointer: 'cursor'
+            width: '80%', color: 'black', fontSize: '11px', pointer: 'cursor',
           }}
           >
             <span style={{
-              border: '1px solid', borderRadius: '50%', borderColor: '#AAA'
+              border: '1px solid', borderRadius: '50%', borderColor: '#AAA',
             }}
             >
               <Increase style={{
-                color: '#AAA', pointer: 'cursor'
+                color: '#AAA', pointer: 'cursor',
               }}
               />
 
@@ -420,7 +421,7 @@ X
               background: '#ff8182',
               color: '#fff',
               fontSize: '17px',
-              float: 'left'
+              float: 'left',
             }}
           >
             {' '}
@@ -436,7 +437,7 @@ Place Order
               background: '#e04f54',
               color: '#fff',
               fontSize: '17px',
-              marginLeft: '45px'
+              marginLeft: '45px',
             }}
           >
             <span style={{}}>

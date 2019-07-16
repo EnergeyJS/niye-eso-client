@@ -1,5 +1,7 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import clsx from 'clsx';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -21,7 +23,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
 function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+  return {
+    name, calories, fat, carbs, protein,
+  };
 }
 
 const rows = [
@@ -65,16 +69,28 @@ function getSorting(order, orderBy) {
 }
 
 const headRows = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+  {
+    id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)',
+  },
+  {
+    id: 'calories', numeric: true, disablePadding: false, label: 'Calories',
+  },
+  {
+    id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)',
+  },
+  {
+    id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)',
+  },
+  {
+    id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)',
+  },
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-  const createSortHandler = property => event => {
+  const {
+    onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort,
+  } = props;
+  const createSortHandler = property => (event) => {
     onRequestSort(event, property);
   };
 
@@ -127,13 +143,13 @@ const useToolbarStyles = makeStyles(theme => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark,
+      },
   spacer: {
     flex: '1 1 100%',
   },
@@ -145,7 +161,7 @@ const useToolbarStyles = makeStyles(theme => ({
   },
 }));
 
-const EnhancedTableToolbar = props => {
+const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
 
