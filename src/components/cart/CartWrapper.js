@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
     right: '-3vh',
     position: 'fixed',
     top: '64px',
-    bottom: 0
+    bottom: 0,
+    zIndex: 1,
   },
   paper: {
     textAlign: 'center',
