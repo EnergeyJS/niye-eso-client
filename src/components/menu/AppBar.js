@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Typography from '@material-ui/core/Typography';
-
+import { useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
@@ -45,6 +45,7 @@ export default function Appbar() {
   const [expandSpam, setExpandSpam] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [serachValue, setSerachValue] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -65,6 +66,28 @@ export default function Appbar() {
   function handleMobileMenuOpen(event) {
     setMobileMoreAnchorEl(event.currentTarget);
   }
+
+  const dispatch = useDispatch();
+  const searchSubmit = useCallback((event) => {
+    event.preventDefault();
+    return dispatch({
+      type: 'setData',
+      data: [{
+        name: 'Oil',
+        description: `Lorem Ipsum is simply dummy text of the 
+      printing and typesetting industry. Lorem Ipsum has been 
+      the industry's standard dummy text ever since the 1500s, 
+      when an unknown printer took a galley of type and scrambled 
+      it to make a type specimen book. It has survived not only five 
+      centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`,
+        quantity: '1kg',
+        discount: '30%',
+        stock: '200kg',
+        reviews: '4.9',
+        date: '17 June 2019',
+      }],
+    });
+  }, [dispatch]);
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -154,7 +177,7 @@ export default function Appbar() {
           <Typography className={classes.title} variant="h6" noWrap>
             <Link to="/" className={classes.link}>E-Com</Link>
           </Typography>
-          <div className={classes.search}>
+          <form className={classes.search} onSubmit={searchSubmit}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -165,8 +188,10 @@ export default function Appbar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'Search' }}
+              value={serachValue}
+              onChange={e => setSerachValue(e.target.value)}
             />
-          </div>
+          </form>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="Show 4 new mails" color="inherit">
