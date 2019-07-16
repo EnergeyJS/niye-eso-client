@@ -5,7 +5,7 @@ import store from './store';
 import ProductDetails from './views/ProductDetails';
 import Home from './views/Home';
 import Products from './views/Products';
-import Offers from './views/Offers';
+import Offers from './views/OfferProduct';
 import MTStyle from './modules/index';
 
 import AppBar from './components/menu/AppBar';
