@@ -27,7 +27,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <div className={classes.root}>
-          <AppBar />
+          <AppBar/>
           <Cart setClass={setClass} unSetClass={unSetClass} />
           <main className={classes.content}>
             <div className={widthClass}>

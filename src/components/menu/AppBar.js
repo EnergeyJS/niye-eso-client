@@ -1,7 +1,7 @@
-/* eslint-disable*/
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -33,9 +33,10 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import ChildCare from '@material-ui/icons/ChildCare';
 import Trash from '@material-ui/icons/RestoreFromTrash';
 import Drafts from '@material-ui/icons/Drafts';
+import { Link } from 'react-router-dom';
 import MTStyle from '../../modules/index';
 
-export default function appBar() {
+export default function Appbar() {
   const classes = MTStyle();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -67,7 +68,7 @@ export default function appBar() {
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-   <Menu
+    <Menu
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
@@ -151,7 +152,7 @@ export default function appBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            <Link to="/" className={classes.link}>E-Com</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -220,21 +221,35 @@ export default function appBar() {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
+            {theme.direction === 'rtl'
+              ? <ChevronRightIcon />
+              : <ChevronLeftIcon />}
           </IconButton>
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {[
+            'Offers',
+            'Inbox',
+            'Starred',
+            'Send email',
+            'Drafts',
+          ].map(text => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                { text === 'Offers'
+                  ? <Badge
+                  className={classes.margin}
+                  badgeContent={99}
+                  color="primary"
+                >
+                <InboxIcon />
+                </Badge> : <InboxIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+
+              <Link to={text.toLowerCase()} className={classes.link}>
+                <ListItemText primary={text} />
+              </Link>
             </ListItem>
           ))}
         </List>
@@ -251,7 +266,7 @@ export default function appBar() {
                 'Bath & Skincare',
               ],
               state: expandBabyCare,
-              updateState: expandBabyCare => setExpandBabyCare(!expandBabyCare),
+              updateState: expandBbyCare => setExpandBabyCare(!expandBbyCare),
             },
             {
               menu: 'Trash',
@@ -263,33 +278,48 @@ export default function appBar() {
                 'Bath & Skincare',
               ],
               state: expandTrash,
-              updateState: expandTrash => setExpandTrash(!expandTrash),
+              updateState: expandTrsh => setExpandTrash(!expandTrsh),
             },
             {
               menu: 'Spam',
               icon: <Drafts />,
               subItems: [],
               state: expandSpam,
-              updateState: expandSpam => setExpandSpam(!expandSpam),
+              updateState: expandSpm => setExpandSpam(!expandSpm),
             },
-          ].map((item, index) => (
+          ].map((item, indx) => (
+            // eslint-disable-next-line react/jsx-key
             <div>
-              <ListItem button onClick={(e) => {
-                item.updateState(item.state);
-                !item.state && Array.isArray(item.subItems) && item.subItems.length && setOpen(true);
-              }}>
+              <ListItem
+                key={indx}
+                button
+                onClick={() => {
+                  item.updateState(item.state);
+                  // eslint-disable-next-line no-unused-expressions
+                  !item.state
+                    && Array.isArray(item.subItems)
+                    && item.subItems.length
+                    && setOpen(true);
+                }}
+              >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.menu} />
                 {item.state ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
               <Collapse in={item.state} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  {Array.isArray(item.subItems) && item.subItems.map(item => (
-                    <ListItem button className={classes.nested}>
-                      <ListItemIcon>{item.icon}</ListItemIcon>
-                      <ListItemText primary={item} />
-                    </ListItem>
-                  ))}
+                  {Array.isArray(item.subItems)
+                    && item.subItems.map(
+                      (
+                        subItem,
+                        index,
+                      ) => (
+                        <ListItem key={index} button className={classes.nested}>
+                          <ListItemIcon />
+                          <ListItemText primary={subItem} />
+                        </ListItem>
+                      ),
+                    )}
                 </List>
               </Collapse>
             </div>

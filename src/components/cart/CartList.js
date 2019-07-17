@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -63,7 +62,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleModal({ open = false, closeModal }) {
+// eslint-disable-next-line react/prop-types
+export default function SimpleModal({ closeModal }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
