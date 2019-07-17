@@ -1,10 +1,15 @@
 {
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb-base", "plugin:react/recommended"],
   "parser": "babel-eslint",
+  "plugins": [
+    "react-hooks"
+  ],
   "rules": {
     "no-underscore-dangle": 0,
     "max-len": [2, 120],
-    "linebreak-style": 0
-
+    "linebreak-style": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off"
   }
  }

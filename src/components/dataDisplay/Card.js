@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -87,6 +86,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// eslint-disable-next-line react/prop-types
 export default function RecipeReviewCard({ data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -97,9 +97,9 @@ export default function RecipeReviewCard({ data }) {
     setOpen(false);
   };
 
-  const openModal = (paramModaldata) => {
+  const openModal = (mdata) => {
     setOpen(true);
-    setModalData(modalData);
+    setModalData(mdata);
   };
 
   return (
