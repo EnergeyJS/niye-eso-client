@@ -1,4 +1,4 @@
-/* eslint-disable*/
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -12,15 +12,15 @@ import ShoppingBag from '@material-ui/icons/ShoppingBasket';
 import Button from '@material-ui/core/Button';
 import MoDal from './Modal';
 
-const useStyles = makeStyles (theme => ({
-  card:{
-    height:'285px',
-    width:'225px',
-    margin:'1.8vw 2vw',
-    textAlign:"center",
-    '&:hover>.CardContentOverly':{
-        display:'flex'
-    }
+const useStyles = makeStyles(theme => ({
+  card: {
+    height: '285px',
+    width: '225px',
+    margin: '1.8vw 2vw',
+    textAlign: 'center',
+    '&:hover>.CardContentOverly': {
+      display: 'flex',
+    },
 
   },
   media: {
@@ -34,7 +34,6 @@ const useStyles = makeStyles (theme => ({
     right: '0',
   },
   icon: {
-    background: theme.palette.primary.main,
     transform: 'rotate(0deg)',
     margin: '0 5px',
     float: 'left',
@@ -98,7 +97,7 @@ export default function RecipeReviewCard({ data }) {
     setOpen(false);
   };
 
-  const openModal = (modalData) => {
+  const openModal = (paramModaldata) => {
     setOpen(true);
     setModalData(modalData);
   };

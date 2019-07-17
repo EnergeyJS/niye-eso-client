@@ -5,7 +5,8 @@ import store from './store';
 import {Provider} from 'react-redux';
 import Home from './views/Home';
 import Products from './views/Products';
-import signin from './views/auth/signin'
+import signin from './views/auth/signin';
+import signup from './views/auth/signup';
 import MTStyle from './modules/index';
 
 
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/" exact component={Home} />
             <Route path="/products" exact component={Products} />
             <Route path="/signin" exact component={signin} />
+            <Route path="/signup" exact component={signup} />
           </main>
         </div>
       </Router>

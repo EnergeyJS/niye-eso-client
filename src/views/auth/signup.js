@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: '40vw',
+    margin: '10px 0',
   },
   dense: {
     marginTop: 19,
@@ -64,50 +65,66 @@ export default function TextFields() {
 
   return (
     <div>
-      <form className={classes.container} noValidate autoComplete='off'>
+      <form className={classes.container} noValidate autoComplete="off">
         <TextField
-          id='standard-name'
-          label='Email'
-          name='Email'
+          id="standard-name"
+          label="Email"
+          name="Email"
           variant="filled"
           className={classes.textField}
           value={values.name}
           onChange={handleChange('name')}
-          margin='normal'
-          helperText='Test'
+          margin="normal"
+          helperText="Test"
         />
 
         <TextField
-        id="filled-adornment-password"
-        className={ classes.textField }
-        variant="filled"
-        type={values.showPassword ? 'text' : 'password'}
-        label="Password"
-        name="password"
-        value={values.password}
-        onChange={handleChange('password')}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                edge="end"
-                aria-label="Toggle password visibility"
-                onClick={handleClickShowPassword}
-              >
-                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
-      />
-        <div>
-          <Checkbox
-            value='checkedA'
-            inputProps={{ 'aria-label': 'Checkbox A' }}
-            className={classes.checkbox}
-          />
-          Keep me logged in
-        </div>
+          id="filled-adornment-password"
+          className={classes.textField}
+          variant="filled"
+          type={values.showPassword ? 'text' : 'password'}
+          label="Password"
+          name="password"
+          value={values.password}
+          onChange={handleChange('password')}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  edge="end"
+                  aria-label="Toggle password visibility"
+                  onClick={handleClickShowPassword}
+                >
+                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+
+        <TextField
+          id="filled-adornment-password"
+          className={classes.textField}
+          variant="filled"
+          type={values.showPassword ? 'text' : 'password'}
+          label="Confirm Password"
+          name="confirm_password"
+          value={values.password}
+          onChange={handleChange('password')}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  edge="end"
+                  aria-label="Toggle password visibility"
+                  onClick={handleClickShowPassword}
+                >
+                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
         <Button className={classes.button}>Submit</Button>
       </form>
     </div>
