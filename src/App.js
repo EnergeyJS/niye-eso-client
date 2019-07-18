@@ -8,6 +8,7 @@ import Products from './views/Products';
 import signin from './views/auth/signin';
 import signup from './views/auth/signup';
 import MTStyle from './modules/index';
+import Offers from './views/OfferProduct/index';
 
 
 import AppBar from './components/menu/AppBar';
