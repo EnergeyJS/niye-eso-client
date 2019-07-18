@@ -13,8 +13,8 @@ import MoDal from './Modal';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    height: '42vh',
-    width: '230px',
+    height: '285px',
+    width: '225px',
     margin: '1.8vw 2vw',
     textAlign: 'center',
     '&:hover>.CardContentOverly': {
@@ -97,9 +97,9 @@ export default function RecipeReviewCard({ data }) {
     setOpen(false);
   };
 
-  const openModal = (mdata) => {
+  const openModal = (paramModaldata) => {
     setOpen(true);
-    setModalData(mdata);
+    setModalData(paramModaldata);
   };
 
   return (
