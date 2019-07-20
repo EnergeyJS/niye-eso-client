@@ -1,0 +1,2 @@
+export const GET_DUMMY_DATA = 'GET_DUMMY_DATA';
+export const FILTER_DUMMY_DATA = 'CLEAR_ERRORS';

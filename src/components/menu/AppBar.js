@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -35,8 +35,20 @@ import Trash from '@material-ui/icons/RestoreFromTrash';
 import Drafts from '@material-ui/icons/Drafts';
 import { Link } from 'react-router-dom';
 import MTStyle from '../../modules/index';
+import { data } from '../../services/data';
+import {
+  GET_DUMMY_DATA,
+} from '../../actions/types';
 
 export default function Appbar() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: GET_DUMMY_DATA,
+      payload: data,
+    });
+  });
+
   const classes = MTStyle();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -67,7 +79,7 @@ export default function Appbar() {
     setMobileMoreAnchorEl(event.currentTarget);
   }
 
-  const dispatch = useDispatch();
+
   const searchSubmit = useCallback((event) => {
     event.preventDefault();
     return dispatch({
