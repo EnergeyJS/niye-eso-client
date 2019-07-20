@@ -115,7 +115,7 @@ export default function RecipeReviewCard({ data }) {
       <Grid item container direction="colum" spacing={3}>
         <Grid item xs={6}>
           <div>
-            <img src={OfferImage} height="300" width="400" />
+            <img src={OfferImage} height="300" width="400" alt=""/>
           </div>
         </Grid>
         <CardContent>

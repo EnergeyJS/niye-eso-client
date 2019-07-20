@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import {
-  Grid,
-} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Increase from '@material-ui/icons/KeyboardArrowUp';
 import Decrease from '@material-ui/icons/KeyboardArrowDown';
 
@@ -36,11 +34,9 @@ const useStyles = makeStyles(theme => ({
     float: 'left',
     position: 'relative',
     boxSizing: 'border-box',
-
   },
   button: {
     margin: theme.spacing(1),
-
   },
   cartFooter: {
     position: 'fixed',
@@ -62,7 +58,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-// eslint-disable-next-line react/prop-types
 export default function SimpleModal({ closeModal }) {
   const classes = useStyles();
   return (
@@ -88,24 +83,32 @@ export default function SimpleModal({ closeModal }) {
         <div className={classes.cartProgress}>
           <div>
             <span>
-              <span style={{ color: '#fff', fontSize: '14px', paddingLeft: '5px' }}>
-                Shop ৳300 more and save ৳19 fee
-
-              </span>
-              <span style={{
-                color: '#fff', fontSize: '14px', marginRight: '10px', float: 'right',
-              }}
+              <span
+                style={{ color: '#fff', fontSize: '14px', paddingLeft: '5px' }}
               >
-৳39
-
+                Shop ৳300 more and save ৳19 fee
+              </span>
+              <span
+                style={{
+                  color: '#fff',
+                  fontSize: '14px',
+                  marginRight: '10px',
+                  float: 'right',
+                }}
+              >
+                ৳39
               </span>
             </span>
           </div>
-
         </div>
-        <div style={{
-          height: '60px', width: '100%', backgroundColor: '#e4e0e1', boxSizing: 'border-box', border: '1px',
-        }}
+        <div
+          style={{
+            height: '60px',
+            width: '100%',
+            backgroundColor: '#e4e0e1',
+            boxSizing: 'border-box',
+            border: '1px',
+          }}
         >
           <p style={{ textAlign: 'center' }}>Express Delivery</p>
         </div>
@@ -114,303 +117,384 @@ export default function SimpleModal({ closeModal }) {
 
           <div>
             <Grid container>
-
               <Grid item xs={1} container direction="colum">
                 <Grid>
                   <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
                 </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
+                <Grid>
+                  <span style={{ marginLeft: '8px' }}>1</span>
+                </Grid>
+                <Grid>
+                  <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
+                </Grid>
               </Grid>
 
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
+              <Grid
+                item
+                xs={2}
+                style={{ marginLeft: '10px', marginTop: '15px' }}
+              >
                 {' '}
                 <img
                   src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
                   style={{ width: '50px', height: '30%' }}
                   alt=""
                 />
-
               </Grid>
 
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
+              <Grid
+                item
+                xs={6}
+                container
+                direction="colum"
+                style={{ marginTop: '15px', marginLeft: '10px' }}
+              >
                 <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
+                  <span style={{ color: '#615e58', fontSize: '14px' }}>
+                    Meril Baby Shampoo
+                  </span>
                 </Grid>
                 <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
+                  <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                    {' '}
+                    ৳ 100 / 110 m
+                  </span>
                 </Grid>
               </Grid>
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                  }}
                 >
-৳39
-
+                  ৳39
                 </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                    marginLeft: '16px',
+                    pointer: 'cursor',
+                  }}
                 >
-X
-
+                  X
                 </span>
               </Grid>
-
-
             </Grid>
-
           </div>
           <hr />
 
           <div>
             <Grid container>
-
               <Grid item xs={1} container direction="colum">
                 <Grid>
                   <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
                 </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
+                <Grid>
+                  <span style={{ marginLeft: '8px' }}>1</span>
+                </Grid>
+                <Grid>
+                  <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
+                </Grid>
               </Grid>
 
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
+              <Grid
+                item
+                xs={2}
+                style={{ marginLeft: '10px', marginTop: '15px' }}
+              >
                 {' '}
                 <img
                   src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
                   style={{ width: '50px', height: '30%' }}
                   alt=""
                 />
-
               </Grid>
 
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
+              <Grid
+                item
+                xs={6}
+                container
+                direction="colum"
+                style={{ marginTop: '15px', marginLeft: '10px' }}
+              >
                 <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
+                  <span style={{ color: '#615e58', fontSize: '14px' }}>
+                    Meril Baby Shampoo
+                  </span>
                 </Grid>
                 <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
+                  <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                    {' '}
+                    ৳ 100 / 110 m
+                  </span>
                 </Grid>
               </Grid>
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                  }}
                 >
-৳39
-
+                  ৳39
                 </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                    marginLeft: '16px',
+                    pointer: 'cursor',
+                  }}
                 >
-X
-
+                  X
                 </span>
               </Grid>
-
-
             </Grid>
-
           </div>
           <hr />
 
           <div>
             <Grid container>
-
               <Grid item xs={1} container direction="colum">
                 <Grid>
                   <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
                 </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
+                <Grid>
+                  <span style={{ marginLeft: '8px' }}>1</span>
+                </Grid>
+                <Grid>
+                  <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
+                </Grid>
               </Grid>
 
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
+              <Grid
+                item
+                xs={2}
+                style={{ marginLeft: '10px', marginTop: '15px' }}
+              >
                 {' '}
                 <img
                   src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
                   style={{ width: '50px', height: '30%' }}
                   alt=""
                 />
-
               </Grid>
 
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
+              <Grid
+                item
+                xs={6}
+                container
+                direction="colum"
+                style={{ marginTop: '15px', marginLeft: '10px' }}
+              >
                 <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
+                  <span style={{ color: '#615e58', fontSize: '14px' }}>
+                    Meril Baby Shampoo
+                  </span>
                 </Grid>
                 <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
+                  <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                    {' '}
+                    ৳ 100 / 110 m
+                  </span>
                 </Grid>
               </Grid>
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                  }}
                 >
-৳39
-
+                  ৳39
                 </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                    marginLeft: '16px',
+                    pointer: 'cursor',
+                  }}
                 >
-X
-
+                  X
                 </span>
               </Grid>
-
-
             </Grid>
-
           </div>
           <hr />
 
           <div>
             <Grid container>
-
               <Grid item xs={1} container direction="colum">
                 <Grid>
                   <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
                 </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
+                <Grid>
+                  <span style={{ marginLeft: '8px' }}>1</span>
+                </Grid>
+                <Grid>
+                  <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
+                </Grid>
               </Grid>
 
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
+              <Grid
+                item
+                xs={2}
+                style={{ marginLeft: '10px', marginTop: '15px' }}
+              >
                 {' '}
                 <img
                   src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
                   style={{ width: '50px', height: '30%' }}
                   alt=""
                 />
-
               </Grid>
 
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
+              <Grid
+                item
+                xs={6}
+                container
+                direction="colum"
+                style={{ marginTop: '15px', marginLeft: '10px' }}
+              >
                 <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
+                  <span style={{ color: '#615e58', fontSize: '14px' }}>
+                    Meril Baby Shampoo
+                  </span>
                 </Grid>
                 <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
+                  <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                    {' '}
+                    ৳ 100 / 110 m
+                  </span>
                 </Grid>
               </Grid>
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                  }}
                 >
-৳39
-
+                  ৳39
                 </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                    marginLeft: '16px',
+                    pointer: 'cursor',
+                  }}
                 >
-X
-
+                  X
                 </span>
               </Grid>
-
-
             </Grid>
-
           </div>
           <hr />
           <div>
             <Grid container>
-
               <Grid item xs={1} container direction="colum">
                 <Grid>
                   <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
                 </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
+                <Grid>
+                  <span style={{ marginLeft: '8px' }}>1</span>
+                </Grid>
+                <Grid>
+                  <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
+                </Grid>
               </Grid>
 
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
+              <Grid
+                item
+                xs={2}
+                style={{ marginLeft: '10px', marginTop: '15px' }}
+              >
                 {' '}
                 <img
                   src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
                   style={{ width: '50px', height: '30%' }}
                   alt=""
                 />
-
               </Grid>
 
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
+              <Grid
+                item
+                xs={6}
+                container
+                direction="colum"
+                style={{ marginTop: '15px', marginLeft: '10px' }}
+              >
                 <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
+                  <span style={{ color: '#615e58', fontSize: '14px' }}>
+                    Meril Baby Shampoo
+                  </span>
                 </Grid>
                 <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
+                  <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                    {' '}
+                    ৳ 100 / 110 m
+                  </span>
                 </Grid>
               </Grid>
 
               <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                  }}
                 >
-৳39
-
+                  ৳39
                 </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
+                <span
+                  style={{
+                    color: '#AAA',
+                    fontSize: '14px',
+                    marginLeft: '16px',
+                    pointer: 'cursor',
+                  }}
                 >
-X
-
+                  X
                 </span>
               </Grid>
-
-
             </Grid>
-
           </div>
           <hr />
-
-
         </div>
 
-
         <div className={classes.cartCoupun}>
-
-          <Button style={{
-            width: '80%', color: 'black', fontSize: '11px', pointer: 'cursor',
-          }}
-          >
-            <span style={{
-              border: '1px solid', borderRadius: '50%', borderColor: '#AAA',
+          <Button
+            style={{
+              width: '80%',
+              color: 'black',
+              fontSize: '11px',
+              pointer: 'cursor',
             }}
-            >
-              <Increase style={{
-                color: '#AAA', pointer: 'cursor',
+          >
+            <span
+              style={{
+                border: '1px solid',
+                borderRadius: '50%',
+                borderColor: '#AAA',
               }}
+            >
+              <Increase
+                style={{
+                  color: '#AAA',
+                  pointer: 'cursor',
+                }}
               />
-
             </span>
             <span style={{ marginLeft: '10px' }}>Have a special Code?</span>
-
-
           </Button>
-
         </div>
 
         <div className={classes.cartFooter}>
@@ -425,9 +509,7 @@ X
             }}
           >
             {' '}
-Place Order
-            {' '}
-
+            Place Order{' '}
           </Button>
 
           <Button
@@ -445,10 +527,8 @@ Place Order
               <span>56</span>
             </span>
           </Button>
-
         </div>
       </div>
     </div>
-
   );
 }
