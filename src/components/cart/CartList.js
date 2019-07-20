@@ -110,7 +110,7 @@ export default function SimpleModal({ closeModal }) {
           <p style={{ textAlign: 'center' }}>Express Delivery</p>
         </div>
 
-        <div style={{ height: '350px', overflowY: 'scroll' }}>
+        <div style={{ height: '300px', overflowY: 'scroll' }}>
 
           <div>
             <Grid container>
