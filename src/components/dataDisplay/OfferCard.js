@@ -119,7 +119,7 @@ export default function RecipeReviewCard({ data }) {
           </div>
         </Grid>
         <CardContent>
-        <Grid item xs={4} spacing={3} >
+        <Grid item xs={4} >
           <Card className={classes.Cartcard}>
             <div className="discount"><span>{data.discount}</span></div>
             <CardMedia
