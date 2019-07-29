@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // eslint-disable-next-line react/prop-types
-export default function RecipeReviewCard({ data }) {
+export default function RecipeReviewCard({ data, OnChange }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState(data);
@@ -136,7 +136,8 @@ export default function RecipeReviewCard({ data }) {
           <Comparisson />
         </IconButton> */}
         <Button
-          className={classes.icon}>
+          className={classes.icon}
+          onClick={OnChange}>
           <span className={classes.buttonIcon}><ShoppingBag /></span>
           Add To Cart
         </Button>

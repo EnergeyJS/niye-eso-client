@@ -41,7 +41,10 @@ const Footer = () => (
             </h6>
             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: '100%' }} />
             <p>
-            is an online shop in Dhaka, Bangladesh. We believe time is valuable to our fellow Dhaka residents, and that they should not have to waste hours in traffic, brave bad weather and wait in line just to buy basic necessities like eggs!
+            is an online shop in Dhaka, Bangladesh.
+             We believe time is valuable to our fellow Dhaka residents,
+             and that they should not have to waste hours in traffic,
+              brave bad weather and wait in line just to buy basic necessities like eggs!
             </p>
           </MDBCol>
           <MDBCol md="3" lg="4" xl="3" className="mb-4 dark-grey-text">

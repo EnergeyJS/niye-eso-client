@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import React, { } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Button from 'react-bootstrap/Button';
-
 // import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import imgUrl from '../../assests/images/Background_home.jpg';
 import SaveMoney from '../../assests/images/save_money.jpg';
 import Category from '../../components/dataDisplay/Category';
 import CarouselEffect from '../../components/dataDisplay/Carousel ';
@@ -16,6 +12,8 @@ import Footer from '../../components/Footer';
 import DeliveryMen from '../../assests/images/DeliveryMan.jpg';
 import freshVegetables from '../../assests/images/freshVegetables.jpg';
 import GroceryStore from '../../assests/images/GroceryStore.jpg';
+
+import Styles from './style';
 
 const category = [
   {
@@ -56,61 +54,8 @@ const category = [
   },
 ];
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    padding: 0,
-  },
-  header: {
-    flexGrow: 1,
-    backgroundImage: `url(${imgUrl})`,
-    height: '50vh',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  },
-  search: {
-    position: 'absolute',
-    boxSizing: 'border-box',
-    border: '1px solid #ccc',
-    borderRadius: theme.shape.borderRadius,
-    zIndex: 1,
-    width: '50%',
-  },
-  searchIcon: {
-    width: theme.spacing(5),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-
-    [theme.breakpoints.up('md')]: {
-      width: 600,
-    },
-  },
-  img: {
-    // height: 300,
-    width: '100%',
-  },
-  loveTitleHeader: {
-    position: 'relative',
-    bottom: 0,
-    right: 0,
-    overflow: 'hidden',
-  },
-}));
-
 export default function CartWrapper() {
-  const classes = useStyles();
+  const classes = Styles();
 
   return (
     <div className={classes.root}>
@@ -140,6 +85,7 @@ export default function CartWrapper() {
               </div>
               <InputBase
                 placeholder="Search for Products..(Foods, Baby products...)"
+                style={{ fontSize: '17px', fontWeight: '500' }}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
@@ -294,26 +240,10 @@ export default function CartWrapper() {
               <img src={DeliveryMen} className={classes.img} />
 
               <div
-                style={{
-                  position: 'absolute',
-                  background: 'rgba(255,255,255,.8)',
-                  textAlign: 'center',
-                  borderBottom: '3px solid #fdd670',
-                  height: '60%',
-                  padding: 20,
-                  bottom: 0,
-                  right: 0,
-                  display: 'block',
-                  overflow: 'hidden',
-                }}
+                className={classes.loveTitleHeader}
               >
                 <h3
-                  style={{
-                    color: 'black',
-                    fontSize: '20px',
-                    fontWeight: 400,
-                    margin: '0px 0 25px',
-                  }}
+                  className={classes.LoveHeading}
                 >
                   Convenient & Quick
                 </h3>
@@ -326,7 +256,7 @@ export default function CartWrapper() {
                   }}
                 >
                   No waiting in traffic, no haggling, no worries carrying
-                  groceries, they're delivered right at your door.
+                  groceries, they&aposre delivered right at your door.
                 </p>
               </div>
             </div>
@@ -336,26 +266,10 @@ export default function CartWrapper() {
             <div style={{ position: 'relative' }}>
               <img src={freshVegetables} className={classes.img} />
               <div
-                style={{
-                  position: 'absolute',
-                  background: 'rgba(255,255,255,.8)',
-                  textAlign: 'center',
-                  borderBottom: '3px solid #fdd670',
-                  height: '60%',
-                  padding: 20,
-                  bottom: 0,
-                  right: 0,
-                  display: 'block',
-                  overflow: 'hidden',
-                }}
+                className={classes.loveTitleHeader}
               >
                 <h3
-                  style={{
-                    color: 'black',
-                    fontSize: '20px',
-                    fontWeight: 400,
-                    margin: '0px 0 25px',
-                  }}
+                  className={classes.LoveHeading}
                 >
                   Freshly Picked
                 </h3>
@@ -377,26 +291,10 @@ export default function CartWrapper() {
             <div style={{ position: 'relative' }}>
               <img src={GroceryStore} className={classes.img} />
               <div
-                style={{
-                  position: 'absolute',
-                  background: 'rgba(255,255,255,.8)',
-                  textAlign: 'center',
-                  borderBottom: '3px solid #fdd670',
-                  height: '60%',
-                  padding: 20,
-                  bottom: 0,
-                  right: 0,
-                  display: 'block',
-                  overflow: 'hidden',
-                }}
+                className={classes.loveTitleHeader}
               >
                 <h3
-                  style={{
-                    color: 'black',
-                    fontSize: '20px',
-                    fontWeight: 400,
-                    margin: '0px 0 25px',
-                  }}
+                  className={classes.LoveHeading}
                 >
                   A wide range of Products
                 </h3>
