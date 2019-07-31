@@ -42,7 +42,7 @@ const App = () => {
       <Router>
         <div className={classes.root}>
           <AppBar />
-          <Cart setClass={setClass} unSetClass={unSetClass} />
+          <Cart setClass={setClass} unSetClass={unSetClass}/>
           <main className={classes.content}>
             <Route path="/" exact component={Home} />
             <Route path="/products" exact component={Products} />

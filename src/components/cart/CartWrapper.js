@@ -38,6 +38,8 @@ export default function CartWrapper({ setClass, unSetClass, data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
+  console.log(data);
+
   function closeModal() {
     setOpen(false);
     unSetClass();
@@ -70,7 +72,7 @@ export default function CartWrapper({ setClass, unSetClass, data }) {
       )}
       {data || open ? (
         <div className={classes.cartContainer}>
-          <CartList closeModal={closeModal} />
+          <CartList closeModal={closeModal}/>
         </div>
       ) : null}
     </div>
