@@ -238,13 +238,15 @@ export default function Appbar() {
             <ListItem button key={text}>
               <ListItemIcon>
                 { text === 'Offers'
-                  ? <Badge
+                  ? <Link to="/offers" className={classes.link}>
+                  <Badge
                   className={classes.margin}
                   badgeContent={99}
                   color="primary"
                 >
                 <InboxIcon />
-                </Badge> : <InboxIcon />}
+                </Badge>
+                </Link> : <InboxIcon />}
               </ListItemIcon>
 
               <Link to={text.toLowerCase()} className={classes.link}>

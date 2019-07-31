@@ -3,7 +3,7 @@ import React,{useState} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import store from './store';
 import {Provider} from 'react-redux';
-import Home from './views/Home';
+import Home from './views/Home/Home';
 import Products from './views/Products';
 import signin from './views/auth/signin';
 import signup from './views/auth/signup';

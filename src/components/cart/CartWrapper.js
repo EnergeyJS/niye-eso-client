@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CartWrapper({ setClass, unSetClass }) {
+export default function CartWrapper({ setClass, unSetClass, data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -68,11 +68,11 @@ export default function CartWrapper({ setClass, unSetClass }) {
           <div style={{ height: '35%', backgroundColor: '#f5fceb' }}>৳ 135</div>
         </Paper>
       )}
-      {open && (
+      {data || open ? (
         <div className={classes.cartContainer}>
           <CartList closeModal={closeModal} />
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
