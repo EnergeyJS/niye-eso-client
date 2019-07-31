@@ -35,7 +35,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CartWrapper({ setClass, unSetClass, data }) {
-  console.log('CartWrapper.....', data);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
