@@ -38,8 +38,6 @@ export default function CartWrapper({ setClass, unSetClass, data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-  console.log(data);
-
   function closeModal() {
     setOpen(false);
     unSetClass();
