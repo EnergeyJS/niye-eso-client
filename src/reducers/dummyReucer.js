@@ -1,6 +1,7 @@
 
 import {
   GET_DUMMY_DATA,
+  FILTER_DUMMY_DATA
 } from '../actions/types';
 
 const initialState = {
@@ -13,8 +14,8 @@ export default (state = initialState, action) => {
       return { ...state, count: state.count + 1 };
     case 'dsc':
       return { ...state, count: state.count - 1 };
-    case 'setText':
-      return { ...state, text: action.text };
+    case FILTER_DUMMY_DATA:
+      return { list: action.payload };
     case GET_DUMMY_DATA:
       return { ...state, list: action.payload };
     default:
