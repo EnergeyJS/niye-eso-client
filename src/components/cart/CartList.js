@@ -271,6 +271,7 @@ export default function SimpleModal({ closeModal }) {
                 ৳39
               </span>
               <span
+              // eslint-disable-next-line no-console
               onClick={() => console.log('heloo')}
                 style={{
                   color: '#AAA',
@@ -341,6 +342,7 @@ export default function SimpleModal({ closeModal }) {
 
                  <div className={classes.GoButton}>
                   <span
+                  // eslint-disable-next-line no-console
                   onClick={() => console.log('helooo')}
                   style={{
                     fontSize: '17px', color: 'white',
