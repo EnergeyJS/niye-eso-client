@@ -9,6 +9,7 @@ import signin from './views/auth/signin';
 import signup from './views/auth/signup';
 import MTStyle from './modules/index';
 import Offers from './views/OfferProduct/index';
+import { messaging } from "./init-fcm";
 
 
 import AppBar from './components/menu/AppBar';
@@ -17,6 +18,16 @@ import Cart from './components/cart/CartWrapper';
 const App = () => {
   const [widthClass, setWidthClass] = useState(null);
   const classes = MTStyle();
+
+  messaging.requestPermission()
+    .then(async function() {
+      const token = await messaging.getToken();
+      console.log(token)
+    })
+    .catch(function(err) {
+      console.log("Unable to get permission to notify.", err);
+    });
+  navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
 
   function setClass() {
     setWidthClass('adjustWidht');
