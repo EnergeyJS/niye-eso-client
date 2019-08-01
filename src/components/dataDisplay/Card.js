@@ -92,7 +92,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // eslint-disable-next-line react/prop-types
-export default function RecipeReviewCard({ data, OnChange }) {
+export default function RecipeReviewCard({ data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState(data);
