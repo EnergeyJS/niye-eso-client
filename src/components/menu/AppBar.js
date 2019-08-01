@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -40,6 +40,8 @@ import {
   GET_DUMMY_DATA,
 } from '../../actions/types';
 
+import { getFilterDummyData } from '../../actions/dummyAction';
+
 export default function Appbar() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -80,13 +82,10 @@ export default function Appbar() {
   }
 
 
-  const searchSubmit = useCallback((event) => {
+  const searchSubmit = (event) => {
     event.preventDefault();
-    return dispatch({
-      type: 'FILTER_DUMMY_DATA',
-      payload: serachValue,
-    });
-  }, [dispatch, serachValue]);
+    getFilterDummyData(dispatch, serachValue);
+  };
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (

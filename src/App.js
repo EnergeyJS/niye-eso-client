@@ -12,7 +12,8 @@ import AppBar from './components/menu/AppBar';
 import Cart from './components/cart/CartWrapper';
 
 const App = () => {
-  const [setWidthClass] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [widthClass, setWidthClass] = useState(null);
   const classes = MTStyle();
 
   function setClass() {
