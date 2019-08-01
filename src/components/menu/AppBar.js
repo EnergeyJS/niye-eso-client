@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
-
+import { useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
@@ -35,8 +35,22 @@ import Trash from '@material-ui/icons/RestoreFromTrash';
 import Drafts from '@material-ui/icons/Drafts';
 import { Link } from 'react-router-dom';
 import MTStyle from '../../modules/index';
+import { data } from '../../services/data';
+import {
+  GET_DUMMY_DATA,
+} from '../../actions/types';
+
+import { getFilterDummyData } from '../../actions/dummyAction';
 
 export default function Appbar() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: GET_DUMMY_DATA,
+      payload: data,
+    });
+  });
+
   const classes = MTStyle();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -45,6 +59,7 @@ export default function Appbar() {
   const [expandSpam, setExpandSpam] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [serachValue, setSerachValue] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -65,6 +80,12 @@ export default function Appbar() {
   function handleMobileMenuOpen(event) {
     setMobileMoreAnchorEl(event.currentTarget);
   }
+
+
+  const searchSubmit = (event) => {
+    event.preventDefault();
+    getFilterDummyData(dispatch, serachValue);
+  };
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -154,7 +175,7 @@ export default function Appbar() {
           <Typography className={classes.title} variant="h6" noWrap>
             <Link to="/" className={classes.link}>E-Com</Link>
           </Typography>
-          <div className={classes.search}>
+          <form className={classes.search} onSubmit={searchSubmit}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -165,8 +186,10 @@ export default function Appbar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'Search' }}
+              value={serachValue}
+              onChange={e => setSerachValue(e.target.value)}
             />
-          </div>
+          </form>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="Show 4 new mails" color="inherit">

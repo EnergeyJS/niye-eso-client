@@ -9,7 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ShoppingBag from '@material-ui/icons/ShoppingBasket';
 import Button from '@material-ui/core/Button';
+import { useDispatch } from 'react-redux';
 import MoDal from './Modal';
+
+import {
+  CART_DATA,
+} from '../../actions/types';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -91,6 +96,7 @@ export default function RecipeReviewCard({ data, OnChange }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState(data);
+  const dispatch = useDispatch();
 
 
   const closeModal = () => {
@@ -100,6 +106,13 @@ export default function RecipeReviewCard({ data, OnChange }) {
   const openModal = (paramModaldata) => {
     setOpen(true);
     setModalData(paramModaldata);
+  };
+
+  const addingToCart = (cartData) => {
+    dispatch({
+      type: CART_DATA,
+      payload: cartData,
+    });
   };
 
   return (
@@ -136,8 +149,8 @@ export default function RecipeReviewCard({ data, OnChange }) {
           <Comparisson />
         </IconButton> */}
         <Button
-          className={classes.icon}
-          onClick={OnChange}>
+        onClick={() => addingToCart(data)}
+          className={classes.icon}>
           <span className={classes.buttonIcon}><ShoppingBag /></span>
           Add To Cart
         </Button>
