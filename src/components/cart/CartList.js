@@ -69,8 +69,6 @@ export default function SimpleModal({ closeModal }) {
   const classes = useStyles();
   const { cart } = useSelector(state => state.dummyData);
 
-  console.log(cart);
-
   return (
     <div className={classes.root}>
       <div className={classes.cartHeader}>
