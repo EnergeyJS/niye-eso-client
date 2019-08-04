@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import {
-  Grid,
-} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Increase from '@material-ui/icons/KeyboardArrowUp';
 import Decrease from '@material-ui/icons/KeyboardArrowDown';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,9 +17,8 @@ const useStyles = makeStyles(theme => ({
     boxSizing: 'border-box',
     boxShadow: '-2px 0 12px 0 rgba(143,143,143,.38)',
     transition: 'all 1s ease',
-
-    position: 'fixed',
-    top: '55px',
+    position: 'absolute',
+    top: '0px',
   },
   cartHeader: {
     fontSize: '15px',
@@ -36,419 +35,345 @@ const useStyles = makeStyles(theme => ({
     float: 'left',
     position: 'relative',
     boxSizing: 'border-box',
-
   },
   button: {
     margin: theme.spacing(1),
-
   },
   cartFooter: {
     position: 'fixed',
     bottom: '10px',
-    fontSize: '15px',
     color: '#fff',
     height: '60px',
-    width: '30%',
-    boxSizing: 'border-box',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
     padding: '10px 0 0 20px',
   },
   cartCoupun: {
     position: 'fixed',
     bottom: '70px',
     backgroundColor: '#e4e0e1',
-    width: '30%',
+    width: '100%',
     boxSizing: 'border-box',
-    border: '1px',
+    border: '1px solid #EDEDED',
+    cursor: 'pointer',
+  },
+  GoButton: {
+    width: '3%',
+    height: '27px',
+    borderRadius: '4px',
+    marginLeft: '1%',
+    marginRight: '10px',
+    background: '#ff8182',
+    fontSize: '17px',
+    color: 'white',
+    textAlign: 'center',
   },
 }));
 
-// eslint-disable-next-line react/prop-types
 export default function SimpleModal({ closeModal }) {
   const classes = useStyles();
+  const [visible, setVisible] = useState(false);
+
+  const { cart } = useSelector(state => state.dummyData);
+
+  function hideDiv() {
+    setVisible(!visible);
+  }
+
   return (
     <div className={classes.root}>
-      <div className={classes.cartHeader}>
-        <div style={{ float: 'left', paddingTop: '10px' }}>
-          <img
-            src="https://user-images.githubusercontent.com/18731391/60767134-f7a7f000-a0d4-11e9-907d-8e02f9c3ed59.png"
-            alt=""
-          />
-          <span style={{ marginLeft: '5px', color: '#695d5d' }}>0 Items</span>
+      <div style={{ height: '19%' }}>
+        <div className={classes.cartHeader}>
+          <div style={{ float: 'left', paddingTop: '10px' }}>
+            <img
+              src="https://user-images.githubusercontent.com/18731391/60767134-f7a7f000-a0d4-11e9-907d-8e02f9c3ed59.png"
+              alt=""
+            />
+            <span style={{ marginLeft: '5px', color: '#695d5d' }}>
+              0 Items
+            </span>
+          </div>
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={closeModal}
+            style={{ float: 'right' }}
+          >
+            Close
+          </Button>
         </div>
-        <Button
-          variant="contained"
-          className={classes.button}
-          onClick={closeModal}
-          style={{ float: 'right' }}
-        >
-          Close
-        </Button>
-      </div>
-      <div>
+
         <div className={classes.cartProgress}>
           <div>
             <span>
-              <span style={{ color: '#fff', fontSize: '14px', paddingLeft: '5px' }}>
-                Shop ৳300 more and save ৳19 fee
-
-              </span>
-              <span style={{
-                color: '#fff', fontSize: '14px', marginRight: '10px', float: 'right',
-              }}
+              <span
+                style={{
+                  color: '#fff',
+                  fontSize: '14px',
+                  paddingLeft: '5px',
+                }}
               >
-৳39
-
+                Shop ৳300 more and save ৳19 fee
+              </span>
+              <span
+                style={{
+                  color: '#fff',
+                  fontSize: '14px',
+                  marginRight: '10px',
+                  float: 'right',
+                }}
+              >
+                ৳39
               </span>
             </span>
           </div>
-
         </div>
-        <div style={{
-          height: '60px', width: '100%', backgroundColor: '#e4e0e1', boxSizing: 'border-box', border: '1px',
-        }}
+
+        <div
+          style={{
+            height: '60px',
+            width: '100%',
+            backgroundColor: '#e4e0e1',
+            boxSizing: 'border-box',
+            border: '1px',
+          }}
         >
           <p style={{ textAlign: 'center' }}>Express Delivery</p>
         </div>
+      </div>
 
-        <div style={{ height: '350px', overflowY: 'auto' }}>
-
-          <div>
-            <Grid container>
-
-              <Grid item xs={1} container direction="colum">
-                <Grid>
-                  <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
+      <div style={{ height: '48%', overflowY: 'scroll' }}>
+      {cart.map((cartData, index) => (
+            <div key={index}>
+              <Grid container>
+                <Grid item xs={1} container direction="colum">
+                  <Grid>
+                    <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
+                  </Grid>
+                  <Grid>
+                    <span style={{ marginLeft: '8px' }}>1</span>
+                  </Grid>
+                  <Grid>
+                    <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
+                  </Grid>
                 </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
 
-              </Grid>
-
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
-                {' '}
-                <img
-                  src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
-                  style={{ width: '50px', height: '30%' }}
-                  alt=""
-                />
-
-              </Grid>
-
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
-                <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
-                </Grid>
-                <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
+                <Grid
+                  item
+                  xs={2}
+                  style={{ marginLeft: '10px', marginTop: '15px' }}
                 >
-৳39
+                  {' '}
+                  <img
+                    src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
+                    style={{ width: '50px', height: '30%' }}
+                    alt=""
+                  />
+                </Grid>
 
-                </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
+                <Grid
+                  item
+                  xs={6}
+                  container
+                  direction="colum"
+                  style={{ marginTop: '15px', marginLeft: '10px' }}
                 >
-X
+                  <Grid>
+                    <span style={{ color: '#615e58', fontSize: '14px' }}>
+                      {cartData.name}
+                    </span>
+                  </Grid>
+                  <Grid>
+                    <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                      {' '}
+                      ৳ 100 / 110 m
+                    </span>
+                  </Grid>
+                </Grid>
 
-                </span>
+                <Grid item xs={2} style={{ marginTop: '30px' }}>
+                  <span
+                    style={{
+                      color: '#AAA',
+                      fontSize: '14px',
+                    }}
+                  >
+                    ৳39
+                  </span>
+                  <span
+                    style={{
+                      color: '#AAA',
+                      fontSize: '14px',
+                      marginLeft: '16px',
+                      pointer: 'cursor',
+                    }}
+                  >
+                    X
+                  </span>
+                </Grid>
               </Grid>
+            </div>
+      ))}
+        <hr />
 
-
+        <div>
+          <Grid container>
+            <Grid item xs={1} container direction="colum">
+              <Grid>
+                <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
+              </Grid>
+              <Grid>
+                <span style={{ marginLeft: '8px' }}>1</span>
+              </Grid>
+              <Grid>
+                <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
+              </Grid>
             </Grid>
 
-          </div>
-          <hr />
-
-          <div>
-            <Grid container>
-
-              <Grid item xs={1} container direction="colum">
-                <Grid>
-                  <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
-                </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
-              </Grid>
-
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
-                {' '}
-                <img
-                  src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
-                  style={{ width: '50px', height: '30%' }}
-                  alt=""
-                />
-
-              </Grid>
-
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
-                <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
-                </Grid>
-                <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
-                >
-৳39
-
-                </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
-                >
-X
-
-                </span>
-              </Grid>
-
-
-            </Grid>
-
-          </div>
-          <hr />
-
-          <div>
-            <Grid container>
-
-              <Grid item xs={1} container direction="colum">
-                <Grid>
-                  <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
-                </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
-              </Grid>
-
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
-                {' '}
-                <img
-                  src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
-                  style={{ width: '50px', height: '30%' }}
-                  alt=""
-                />
-
-              </Grid>
-
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
-                <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
-                </Grid>
-                <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
-                >
-৳39
-
-                </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
-                >
-X
-
-                </span>
-              </Grid>
-
-
-            </Grid>
-
-          </div>
-          <hr />
-
-          <div>
-            <Grid container>
-
-              <Grid item xs={1} container direction="colum">
-                <Grid>
-                  <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
-                </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
-              </Grid>
-
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
-                {' '}
-                <img
-                  src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
-                  style={{ width: '50px', height: '30%' }}
-                  alt=""
-                />
-
-              </Grid>
-
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
-                <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
-                </Grid>
-                <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
-                >
-৳39
-
-                </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
-                >
-X
-
-                </span>
-              </Grid>
-
-
-            </Grid>
-
-          </div>
-          <hr />
-          <div>
-            <Grid container>
-
-              <Grid item xs={1} container direction="colum">
-                <Grid>
-                  <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
-                </Grid>
-                <Grid><span style={{ marginLeft: '8px' }}>1</span></Grid>
-                <Grid><Decrease style={{ color: '#AAA', pointer: 'cursor' }} /></Grid>
-
-              </Grid>
-
-
-              <Grid item xs={2} style={{ marginLeft: '10px', marginTop: '15px' }}>
-                {' '}
-                <img
-                  src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
-                  style={{ width: '50px', height: '30%' }}
-                  alt=""
-                />
-
-              </Grid>
-
-              <Grid item xs={6} container direction="colum" style={{ marginTop: '15px', marginLeft: '10px' }}>
-                <Grid>
-                  <span style={{ color: '#615e58', fontSize: '14px' }}>Meril Baby Shampoo</span>
-                </Grid>
-                <Grid>
-                  <span style={{ color: '#9A9999', fontSize: '11px' }}> ৳ 100 / 110 m</span>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={2} style={{ marginTop: '30px' }}>
-                <span style={{
-                  color: '#AAA', fontSize: '14px',
-                }}
-                >
-৳39
-
-                </span>
-                <span style={{
-                  color: '#AAA', fontSize: '14px', marginLeft: '16px', pointer: 'cursor',
-                }}
-                >
-X
-
-                </span>
-              </Grid>
-
-
-            </Grid>
-
-          </div>
-          <hr />
-
-
-        </div>
-
-
-        <div className={classes.cartCoupun}>
-
-          <Button style={{
-            width: '80%', color: 'black', fontSize: '11px', pointer: 'cursor',
-          }}
-          >
-            <span style={{
-              border: '1px solid', borderRadius: '50%', borderColor: '#AAA',
-            }}
+            <Grid
+              item
+              xs={2}
+              style={{ marginLeft: '10px', marginTop: '15px' }}
             >
-              <Increase style={{
-                color: '#AAA', pointer: 'cursor',
-              }}
+              {' '}
+              <img
+                src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
+                style={{ width: '50px', height: '30%' }}
+                alt=""
               />
+            </Grid>
 
-            </span>
-            <span style={{ marginLeft: '10px' }}>Have a special Code?</span>
+            <Grid
+              item
+              xs={6}
+              container
+              direction="colum"
+              style={{ marginTop: '15px', marginLeft: '10px' }}
+            >
+              <Grid>
+                <span style={{ color: '#615e58', fontSize: '14px' }}>
+                  Meril Baby Shampoo
+                </span>
+              </Grid>
+              <Grid>
+                <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                  {' '}
+                  ৳ 100 / 110 m
+                </span>
+              </Grid>
+            </Grid>
 
-
-          </Button>
-
+            <Grid item xs={2} style={{ marginTop: '30px' }}>
+              <span
+                style={{
+                  color: '#AAA',
+                  fontSize: '14px',
+                }}
+              >
+                ৳39
+              </span>
+              <span style={{
+                color: '#AAA',
+                fontSize: '14px',
+                marginLeft: '16px',
+                pointer: 'cursor',
+              }}
+              >
+                X
+              </span>
+            </Grid>
+          </Grid>
         </div>
+        <hr />
+      </div>
 
-        <div className={classes.cartFooter}>
-          <Button
-            style={{
-              width: '40%',
-              height: '40px',
-              background: '#ff8182',
-              color: '#fff',
-              fontSize: '17px',
-              float: 'left',
-            }}
-          >
-            {' '}
-Place Order
-            {' '}
+      <div style={{ height: '22%' }}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          container
+          direction="colum"
+          justify="center"
+          alignItems="center"
+          className={classes.cartCoupun}
+        >
+          <Grid item xs={12} sm={12} justify="center" alignItems="center">
+            <span style={{ marginLeft: '6%' }} onClick={hideDiv}>
+              <span
+                style={{
+                  border: '1px solid',
+                  borderRadius: '50%',
+                  borderColor: '#AAA',
+                }}
+              >
+                {visible ? (
+                  <Decrease
 
-          </Button>
-
-          <Button
-            style={{
-              width: '20%',
-              height: '40px',
-              background: '#e04f54',
-              color: '#fff',
-              fontSize: '17px',
-              marginLeft: '45px',
-            }}
-          >
-            <span style={{}}>
-              <span>৳</span>
-              <span>56</span>
+                    style={{
+                      color: '#AAA',
+                      pointer: 'cursor',
+                    }}
+                  />
+                ) : (
+                  <Increase
+                    onClick={hideDiv}
+                    style={{
+                      color: '#AAA',
+                      pointer: 'cursor',
+                    }}
+                  />
+                )}
+              </span>
+              <span style={{ marginLeft: '10px' }}>Have a special Code?</span>
             </span>
-          </Button>
+          </Grid>
+          {visible ? (
+            <Grid item xs={12} sm={12}>
+              <div style={{ display: 'flex', flexDirection: 'row', marginTop: '10px' }}>
+                <div style={{ width: '12%' }}>
+                  <input type="text"
+                  name="name"
+                  placeholder="Special Code"
+                  style={{ width: '90%', textAlign: 'center', marginLeft: '10%' }} />
+                  </div>
 
-        </div>
+                 <div className={classes.GoButton}>
+                  <span
+                  onClick={() => console.log('helooo')}
+                  style={{
+                    fontSize: '17px', color: 'white',
+                  }}>GO</span>
+                  </div>
+
+                <p onClick={() => setVisible(false)}>Close</p>
+              </div>
+            </Grid>
+          ) : null}
+        </Grid>
+
+       <div className={classes.cartFooter}>
+
+             <Link to="/signin" className={classes.link}>
+              <Button
+                style={{
+                  width: '170%',
+                  height: '40px',
+                  background: '#ff8182',
+                  color: '#fff',
+                  fontSize: '17px',
+                }}
+              >
+                <span style={{ width: '60%', textAlign: 'center' }}>
+                  Place Order
+                </span>
+                <span style={{ textAlign: 'center', width: '40%' }}>৳50</span>
+              </Button>
+            </Link>
+            </div>
+
       </div>
     </div>
-
   );
 }

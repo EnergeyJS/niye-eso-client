@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import { useSelector } from 'react-redux';
 import CartList from './CartList';
 
 const useStyles = makeStyles(theme => ({
@@ -10,6 +11,7 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     top: '64px',
     bottom: 0,
+    zIndex: 1,
   },
   paper: {
     textAlign: 'center',
@@ -33,9 +35,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CartWrapper({ setClass, unSetClass }) {
+export default function CartWrapper({ setClass, unSetClass, data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+
+  const { cart } = useSelector(state => state.dummyData);
+
 
   function closeModal() {
     setOpen(false);
@@ -62,16 +67,16 @@ export default function CartWrapper({ setClass, unSetClass }) {
               alt=""
             />
             <br />
-            <span style={{ color: '#fbd66f' }}>0 Items</span>
+            <span style={{ color: '#fbd66f' }}>{cart.length} Items</span>
           </div>
           <div style={{ height: '35%', backgroundColor: '#f5fceb' }}>৳ 135</div>
         </Paper>
       )}
-      {open && (
+      {data || open || cart.length > 0 ? (
         <div className={classes.cartContainer}>
           <CartList closeModal={closeModal} />
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

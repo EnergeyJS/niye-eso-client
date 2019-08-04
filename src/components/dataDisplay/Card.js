@@ -9,12 +9,19 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ShoppingBag from '@material-ui/icons/ShoppingBasket';
 import Button from '@material-ui/core/Button';
+import { useDispatch } from 'react-redux';
+
+
 import MoDal from './Modal';
+
+import {
+  CART_DATA,
+} from '../../actions/types';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    height: '42vh',
-    width: '230px',
+    height: '285px',
+    width: '225px',
     margin: '1.8vw 2vw',
     textAlign: 'center',
     '&:hover>.CardContentOverly': {
@@ -91,15 +98,23 @@ export default function RecipeReviewCard({ data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState(data);
+  const dispatch = useDispatch();
 
 
   const closeModal = () => {
     setOpen(false);
   };
 
-  const openModal = (mdata) => {
+  const openModal = (paramModaldata) => {
     setOpen(true);
-    setModalData(mdata);
+    setModalData(paramModaldata);
+  };
+
+  const addingToCart = (cartData) => {
+    dispatch({
+      type: CART_DATA,
+      payload: cartData,
+    });
   };
 
   return (
@@ -136,7 +151,8 @@ export default function RecipeReviewCard({ data }) {
           <Comparisson />
         </IconButton> */}
         <Button
-          className={classes.icon}>
+          className={classes.icon}
+          onClick={() => addingToCart(data)}>
           <span className={classes.buttonIcon}><ShoppingBag /></span>
           Add To Cart
         </Button>

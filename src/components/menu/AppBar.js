@@ -33,6 +33,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import ChildCare from '@material-ui/icons/ChildCare';
 import Trash from '@material-ui/icons/RestoreFromTrash';
 import Drafts from '@material-ui/icons/Drafts';
+import { Link } from 'react-router-dom';
 import MTStyle from '../../modules/index';
 
 export default function Appbar() {
@@ -67,7 +68,7 @@ export default function Appbar() {
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-   <Menu
+    <Menu
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
@@ -151,7 +152,7 @@ export default function Appbar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            <Link to="/" className={classes.link}>E-Com</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -220,21 +221,37 @@ export default function Appbar() {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
+            {theme.direction === 'rtl'
+              ? <ChevronRightIcon />
+              : <ChevronLeftIcon />}
           </IconButton>
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {[
+            'Offers',
+            'Inbox',
+            'Starred',
+            'Send email',
+            'Drafts',
+          ].map(text => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                { text === 'Offers'
+                  ? <Link to="/offers" className={classes.link}>
+                  <Badge
+                  className={classes.margin}
+                  badgeContent={99}
+                  color="primary"
+                >
+                <InboxIcon />
+                </Badge>
+                </Link> : <InboxIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+
+              <Link to={text.toLowerCase()} className={classes.link}>
+                <ListItemText primary={text} />
+              </Link>
             </ListItem>
           ))}
         </List>
@@ -272,29 +289,43 @@ export default function Appbar() {
               state: expandSpam,
               updateState: expandSpm => setExpandSpam(!expandSpm),
             },
-          // eslint-disable-next-line react/jsx-key
-          ].map((item, indx) => <div>
-              <ListItem key={indx} button onClick={() => {
-                item.updateState(item.state);
-                // eslint-disable-next-line no-unused-expressions
-                !item.state && Array.isArray(item.subItems) && item.subItems.length && setOpen(true);
-              }}>
+          ].map((item, indx) => (
+            // eslint-disable-next-line react/jsx-key
+            <div>
+              <ListItem
+                key={indx}
+                button
+                onClick={() => {
+                  item.updateState(item.state);
+                  // eslint-disable-next-line no-unused-expressions
+                  !item.state
+                    && Array.isArray(item.subItems)
+                    && item.subItems.length
+                    && setOpen(true);
+                }}
+              >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.menu} />
                 {item.state ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
               <Collapse in={item.state} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  {Array.isArray(item.subItems) && item.subItems.map((subItem, index) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <ListItem key={index} button className={classes.nested}>
-                      <ListItemIcon></ListItemIcon>
-                      <ListItemText primary={subItem} />
-                    </ListItem>
-                  ))}
+                  {Array.isArray(item.subItems)
+                    && item.subItems.map(
+                      (
+                        subItem,
+                        index,
+                      ) => (
+                        <ListItem key={index} button className={classes.nested}>
+                          <ListItemIcon />
+                          <ListItemText primary={subItem} />
+                        </ListItem>
+                      ),
+                    )}
                 </List>
               </Collapse>
-            </div>)}
+            </div>
+          ))}
         </List>
       </Drawer>
     </div>

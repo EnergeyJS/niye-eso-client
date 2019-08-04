@@ -129,6 +129,13 @@ const useStyles = makeStyles(theme => ({
   },
   fullList: {
     width: 'auto',
+  },
+  link: {
+    color: '#fff',
+    '&:hover': {
+      color: "#fff",
+      textDecoration: 'none'
+   },
   }
 }));
 
