@@ -2,15 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import Grid from '@material-ui/core/Grid';
-import OfferCard from './OfferCard';
 
 import OrderImage1 from '../../assests/images/order.jpg';
 import OrderImage2 from '../../assests/images/order_1.jpg';
 import OrderImage3 from '../../assests/images/order_2.jpg';
 import OrderImage4 from '../../assests/images/order_3.jpg';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   sliderContainer: {
     width: '100%',
     height: 100,

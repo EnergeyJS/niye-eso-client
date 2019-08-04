@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import Increase from '@material-ui/icons/KeyboardArrowUp';
 import Decrease from '@material-ui/icons/KeyboardArrowDown';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -75,6 +76,8 @@ export default function SimpleModal({ closeModal, props }) {
   const classes = useStyles();
   const [visible, setVisible] = useState(false);
 
+  const { cart } = useSelector(state => state.dummyData);
+
   function hideDiv() {
     setVisible(!visible);
   }
@@ -142,76 +145,77 @@ export default function SimpleModal({ closeModal, props }) {
       </div>
 
       <div style={{ height: '48%', overflowY: 'scroll' }}>
-        <div>
-          <Grid container>
-            <Grid item xs={1} container direction="colum">
-              <Grid>
-                <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
-              </Grid>
-              <Grid>
-                <span style={{ marginLeft: '8px' }}>1</span>
-              </Grid>
-              <Grid>
-                <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
-              </Grid>
-            </Grid>
+      {cart.map((cartData, index) => (
+            <div key={index}>
+              <Grid container>
+                <Grid item xs={1} container direction="colum">
+                  <Grid>
+                    <Increase style={{ color: '#AAA', pointer: 'cursor' }} />
+                  </Grid>
+                  <Grid>
+                    <span style={{ marginLeft: '8px' }}>1</span>
+                  </Grid>
+                  <Grid>
+                    <Decrease style={{ color: '#AAA', pointer: 'cursor' }} />
+                  </Grid>
+                </Grid>
 
-            <Grid
-              item
-              xs={2}
-              style={{ marginLeft: '10px', marginTop: '15px' }}
-            >
-              {' '}
-              <img
-                src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
-                style={{ width: '50px', height: '30%' }}
-                alt=""
-              />
-            </Grid>
-
-            <Grid
-              item
-              xs={6}
-              container
-              direction="colum"
-              style={{ marginTop: '15px', marginLeft: '10px' }}
-            >
-              <Grid>
-                <span style={{ color: '#615e58', fontSize: '14px' }}>
-                  Meril Baby Shampoo
-                </span>
-              </Grid>
-              <Grid>
-                <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                <Grid
+                  item
+                  xs={2}
+                  style={{ marginLeft: '10px', marginTop: '15px' }}
+                >
                   {' '}
-                  ৳ 100 / 110 m
-                </span>
-              </Grid>
-            </Grid>
+                  <img
+                    src="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
+                    style={{ width: '50px', height: '30%' }}
+                    alt=""
+                  />
+                </Grid>
 
-            <Grid item xs={2} style={{ marginTop: '30px' }}>
-              <span
-                style={{
-                  color: '#AAA',
-                  fontSize: '14px',
-                }}
-              >
-                ৳39
-              </span>
-              <span
-               onClick={() => console.log('heloo')}
-                style={{
-                  color: '#AAA',
-                  fontSize: '14px',
-                  marginLeft: '16px',
-                  pointer: 'cursor',
-                }}
-              >
-                X
-              </span>
-            </Grid>
-          </Grid>
-        </div>
+                <Grid
+                  item
+                  xs={6}
+                  container
+                  direction="colum"
+                  style={{ marginTop: '15px', marginLeft: '10px' }}
+                >
+                  <Grid>
+                    <span style={{ color: '#615e58', fontSize: '14px' }}>
+                      {cartData.name}
+                    </span>
+                  </Grid>
+                  <Grid>
+                    <span style={{ color: '#9A9999', fontSize: '11px' }}>
+                      {' '}
+                      ৳ 100 / 110 m
+                    </span>
+                  </Grid>
+                </Grid>
+
+                <Grid item xs={2} style={{ marginTop: '30px' }}>
+                  <span
+                    style={{
+                      color: '#AAA',
+                      fontSize: '14px',
+                    }}
+                  >
+                    ৳39
+                  </span>
+                  <span
+                    style={{
+                      color: '#AAA',
+                      fontSize: '14px',
+                      marginLeft: '16px',
+                      pointer: 'cursor',
+                    }}
+                  >
+                    X
+                  </span>
+                </Grid>
+              </Grid>
+            </div>
+      ))}
         <hr />
 
         <div>
@@ -270,14 +274,12 @@ export default function SimpleModal({ closeModal, props }) {
               >
                 ৳39
               </span>
-              <span
-              onClick={() => console.log('heloo')}
-                style={{
-                  color: '#AAA',
-                  fontSize: '14px',
-                  marginLeft: '16px',
-                  pointer: 'cursor',
-                }}
+              <span style={{
+                color: '#AAA',
+                fontSize: '14px',
+                marginLeft: '16px',
+                pointer: 'cursor',
+              }}
               >
                 X
               </span>
@@ -288,7 +290,6 @@ export default function SimpleModal({ closeModal, props }) {
       </div>
 
       <div style={{ height: '22%' }}>
-        {/* <div className={classes.cartCoupun}> */}
         <Grid
           item
           xs={12}
@@ -341,36 +342,19 @@ export default function SimpleModal({ closeModal, props }) {
 
                  <div className={classes.GoButton}>
                   <span
-                  onClick={() => console.log('helooo')}
+                 // onClick={() => console.log('helooo')}
                   style={{
                     fontSize: '17px', color: 'white',
                   }}>GO</span>
                   </div>
-                  {/* <Button
-                style={{
-                  height: '30px',
-                  marginLeft: '10%',
-                  background: '#ff8182',
-                  fontSize: '17px',
-                }}
-              >   <span style={{ marginBottom: '10px' }}>
-              Go
-            </span></Button> */}
+
                 <p onClick={() => setVisible(false)}>Close</p>
               </div>
             </Grid>
           ) : null}
         </Grid>
 
-        {/* <Grid
-          item
-          xs={12}
-          sm={12}
-          container
-          direction="row"
-          className={classes.cartFooter}
-        > */}
-                          <div className={classes.cartFooter}>
+       <div className={classes.cartFooter}>
 
              <Link to="/signin" className={classes.link}>
               <Button
@@ -390,27 +374,7 @@ export default function SimpleModal({ closeModal, props }) {
             </Link>
             </div>
 
-
-          {/* <Grid item xs={12} sm={6}>
-          <Button
-            style={{
-              width: '20%',
-              height: '40px',
-              background: '#e04f54',
-              color: '#fff',
-              fontSize: '17px',
-              marginLeft: '45px',
-            }}
-          >
-            <span style={{}}>
-              <span>৳</span>
-              <span>56</span>
-            </span>
-          </Button>
-          </Grid> */}
-        {/* </Grid> */}
       </div>
     </div>
-    // </div>
   );
 }

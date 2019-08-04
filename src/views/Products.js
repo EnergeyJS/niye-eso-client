@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Card from "../components/dataDisplay/Card";
 import BreadCrumbNav from "../components/menu/BreadCrumbNav/BreadCrumbNav";
+<<<<<<< HEAD
 import CartList from '../components/cart/CartList';
 
 const body = [
@@ -208,6 +209,10 @@ const body = [
     date: '17 June 2019',
   },
 ];
+=======
+import CartWrapper from '../components/cart/CartWrapper';
+import { data } from '../services/data';
+>>>>>>> 1bc265bc6a811bdcdee58c2166929bcc1ec66792
 const useStyles = makeStyles(() => ({
   cover: {
     display: 'block',
@@ -253,7 +258,7 @@ export default function Products() {
         </div>
       </Paper>
       <BreadCrumbNav />
-      {body.map((item, index) => (
+      {data.map((item, index) => (
         <Card key={index} data={item} OnChange={() => SaveCart(item)}/>
       ))}
     </div>
