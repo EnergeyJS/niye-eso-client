@@ -341,7 +341,7 @@ export default function SimpleModal({ closeModal }) {
 
                  <div className={classes.GoButton}>
                   <span
-                  onClick={() => console.log('helooo')}
+                 // onClick={() => console.log('helooo')}
                   style={{
                     fontSize: '17px', color: 'white',
                   }}>GO</span>
