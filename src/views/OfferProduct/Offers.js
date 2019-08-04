@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Increase from '@material-ui/icons/KeyboardArrowUp';
-import OfferProduct from './Home';
+import OfferProduct from './OfferProduct';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,7 +37,9 @@ export default function Offers() {
             </div>
 
             <div>
-                <Grid container fixed spacing={2}>
+              <Grid container fixed spacing={2}>
+
+                  <Grid item xs={0.5}></Grid>
 
                     <Grid item xs={10} container direction="colum" spacing={2}>
                     <Grid item xs={3}>
