@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -46,13 +46,41 @@ const useStyles = makeStyles(theme => ({
 
 export default function TextFields() {
   const classes = useStyles();
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     amount: '',
     password: '',
     weight: '',
     weightRange: '',
     showPassword: false,
   });
+
+  const [validationMessage, setvalidationMessage] = useState({
+    validated: false,
+    message: '',
+  });
+
+  const messages = {
+    required: 'This field is required',
+    email: 'Please enter a valid email address',
+  };
+
+  const validate = (event) => {
+    // eslint-disable-next-line no-console
+    console.log(`trm :${event.target.value.trim()}`);
+    if (event.target.value.length === 0) {
+      // eslint-disable-next-line no-console
+      console.log(`test :${event.target.value}`);
+      setvalidationMessage({ ...validationMessage, validated: true, message: messages.required });
+      console.log(`afterValidation :${validationMessage.validated} : ${validationMessage.message}`);
+    } else if (event.target.name === 'Email') {
+      console.log('here');
+      // eslint-disable-next-line
+      const regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      if (!regex.test(event.target.value)) {
+        setvalidationMessage({ ...validationMessage, validated: true, message: messages.email });
+      }
+    }
+  };
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -61,12 +89,14 @@ export default function TextFields() {
     // eslint-disable-next-line no-console
     console.log(event.target.name);
     setValues({ ...values, [name]: event.target.value });
+    validate(event);
   };
 
   return (
     <div>
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
+          error={validationMessage.validated ? 'error' : ''}
           id="standard-name"
           label="Email"
           name="Email"
@@ -75,7 +105,7 @@ export default function TextFields() {
           value={values.name}
           onChange={handleChange('name')}
           margin="normal"
-          helperText="Test"
+          helperText={validationMessage.validated ? validationMessage.message : validationMessage.validated}
         />
 
         <TextField
@@ -103,7 +133,7 @@ export default function TextFields() {
         />
 
         <TextField
-          id="filled-adornment-password"
+          id="filled-adornment-confirm_password"
           className={classes.textField}
           variant="filled"
           type={values.showPassword ? 'text' : 'password'}
