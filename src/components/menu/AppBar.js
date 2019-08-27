@@ -25,6 +25,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import LockOutlined from '@material-ui/icons/LockOutlined';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Collapse from '@material-ui/core/Collapse';
@@ -35,6 +36,7 @@ import Trash from '@material-ui/icons/RestoreFromTrash';
 import Drafts from '@material-ui/icons/Drafts';
 import { Link } from 'react-router-dom';
 import MTStyle from '../../modules/index';
+import SigninModal from '../../views/auth/signinModal';
 
 export default function Appbar() {
   const classes = MTStyle();
@@ -45,10 +47,18 @@ export default function Appbar() {
   const [expandSpam, setExpandSpam] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [openSigninModal, setOpenSigninModal] = useState(false);
+
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  function handleSigninModal() {
+    setOpenSigninModal(true);
+  }
+  const closeSigninModal = () => {
+    setOpenSigninModal(false);
+  };
   function handleProfileMenuOpen(event) {
     setAnchorEl(event.currentTarget);
   }
@@ -93,6 +103,12 @@ export default function Appbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem>
+        <IconButton aria-label="Sign-in to your account" color="inherit">
+          <LockOutlined />
+        </IconButton>
+        <p>Sign in</p>
+      </MenuItem>
       <MenuItem>
         <IconButton aria-label="Show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
@@ -152,7 +168,9 @@ export default function Appbar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to="/" className={classes.link}>E-Com</Link>
+            <Link to="/" className={classes.link}>
+              E-Com
+            </Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -169,6 +187,13 @@ export default function Appbar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            <IconButton
+              aria-label="Sign-in to your account"
+              color="inherit"
+              onClick={handleSigninModal}
+            >
+              <LockOutlined />
+            </IconButton>
             <IconButton aria-label="Show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
@@ -205,6 +230,7 @@ export default function Appbar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <SigninModal open={openSigninModal} closeModal={closeSigninModal}/>
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
@@ -221,30 +247,29 @@ export default function Appbar() {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl'
-              ? <ChevronRightIcon />
-              : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </div>
         <Divider />
         <List>
-          {[
-            'Offers',
-            'Inbox',
-            'Starred',
-            'Send email',
-            'Drafts',
-          ].map(text => (
+          {['Offers', 'Inbox', 'Starred', 'Send email', 'Drafts'].map(text => (
             <ListItem button key={text}>
               <ListItemIcon>
-                { text === 'Offers'
-                  ? <Badge
-                  className={classes.margin}
-                  badgeContent={99}
-                  color="primary"
-                >
-                <InboxIcon />
-                </Badge> : <InboxIcon />}
+                {text === 'Offers' ? (
+                  <Badge
+                    className={classes.margin}
+                    badgeContent={99}
+                    color="primary"
+                  >
+                    <InboxIcon />
+                  </Badge>
+                ) : (
+                  <InboxIcon />
+                )}
               </ListItemIcon>
 
               <Link to={text.toLowerCase()} className={classes.link}>
@@ -309,17 +334,12 @@ export default function Appbar() {
               <Collapse in={item.state} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {Array.isArray(item.subItems)
-                    && item.subItems.map(
-                      (
-                        subItem,
-                        index,
-                      ) => (
-                        <ListItem key={index} button className={classes.nested}>
-                          <ListItemIcon />
-                          <ListItemText primary={subItem} />
-                        </ListItem>
-                      ),
-                    )}
+                    && item.subItems.map((subItem, index) => (
+                      <ListItem key={index} button className={classes.nested}>
+                        <ListItemIcon />
+                        <ListItemText primary={subItem} />
+                      </ListItem>
+                    ))}
                 </List>
               </Collapse>
             </div>
