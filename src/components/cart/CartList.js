@@ -71,8 +71,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleModal({ closeModal, props }) {
-  console.log('productData________', props);
+export default function SimpleModal({ closeModal }) {
   const classes = useStyles();
   const [visible, setVisible] = useState(false);
 

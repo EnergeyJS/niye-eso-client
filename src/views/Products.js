@@ -9,7 +9,7 @@ import { data } from '../services/data';
 
 import {
   CART_DATA,
-} from '../actions/types';
+} from '../store/actions/types';
 
 const useStyles = makeStyles(() => ({
   cover: {

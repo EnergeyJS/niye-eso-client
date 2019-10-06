@@ -1,8 +1,8 @@
 /* eslint-disable*/
 import React,{useState} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import store from './store';
 import {Provider} from 'react-redux';
+import {createStore, compose } from 'redux';
 import Home from './views/Home/Home';
 import Products from './views/Products';
 import signin from './views/auth/signin';
@@ -13,6 +13,16 @@ import Offers from './views/OfferProduct/index';
 
 import AppBar from './components/menu/AppBar';
 import Cart from './components/cart/CartWrapper';
+
+import rootReducer from '../src/store/reducers'
+
+const store = createStore(
+  rootReducer,
+  compose(
+    // eslint-disable-next-line no-undef
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
+  ),
+  );
 
 const App = () => {
   const [widthClass, setWidthClass] = useState(null);

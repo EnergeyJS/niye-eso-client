@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { data } from '../services/data';
+import { data } from '../../services/data';
 
 import {
   GET_DUMMY_DATA,
