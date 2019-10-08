@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     margin: '2px 0',
     textAlign: 'center',
     color: 'red',
-    fontSize: '20px',
+    fontSize: '16px',
     fontWeight: 'bold',
     marginTop: '15px',
   },
@@ -146,7 +146,7 @@ export default function RecipeReviewCard({ data, OnChange }) {
           className={classes.icon}
           onClick={OnChange}>
           <span className={classes.buttonIcon}><ShoppingBag /></span>
-          Add To Cart
+          Add To Bag
         </Button>
       </CardActions>
     </Card>

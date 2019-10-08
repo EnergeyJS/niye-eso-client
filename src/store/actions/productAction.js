@@ -4,10 +4,10 @@
 import axios from 'axios';
 import { data } from '../../services/data';
 
-
 import {
   GET_PRODUCT_DATA,
   FILTER_DUMMY_DATA,
+  CART_DATA,
 } from './types';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -23,6 +23,13 @@ export const getProductData = (dispatch) => {
     });
   });
 };
+
+export const addingToCart = cartData => ({
+
+  type: CART_DATA,
+  payload: cartData,
+
+});
 
 export const getFilterDummyData = (dispatch, serachValue) => {
   dispatch({
