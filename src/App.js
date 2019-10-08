@@ -4,9 +4,9 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createStore, compose } from 'redux';
 import Home from './views/Home/Home';
-import Products from './views/Products';
-import signin from './views/auth/signin';
-import signup from './views/auth/signup';
+import Products from './views/products/Products';
+import signin from './views/auth/signin/signin';
+import signup from './views/auth/signUp/signup';
 import MTStyle from './modules/index';
 import Offers from './views/OfferProduct/index';
 

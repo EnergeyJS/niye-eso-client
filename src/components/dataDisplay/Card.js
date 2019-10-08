@@ -45,9 +45,11 @@ const useStyles = makeStyles(theme => ({
       backgroundPosition: 'left bottom',
     },
   },
-  description: {
-    height: '3vh',
+  name: {
+    height: '4vh',
     overflow: 'hidden',
+    fontSize: '16px',
+    fontWeight: '300px',
   },
   amount: {
     height: '2vh',
@@ -55,9 +57,13 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
   },
   price: {
-    height: '2vh',
+    height: '4vh',
     margin: '2px 0',
     textAlign: 'center',
+    color: 'red',
+    fontSize: '20px',
+    fontWeight: 'bold',
+    marginTop: '15px',
   },
   CardActions: {
     display: 'inline-block',
@@ -104,21 +110,22 @@ export default function RecipeReviewCard({ data, OnChange }) {
 
   return (
     <Card className={classes.card}>
-      <div className="discount"><span>{data.discount}</span></div>
+      {/* <div className="discount"><span>50%</span></div> */}
       <CardMedia
         className={classes.media}
         image="https://i.ibb.co/chT1Fjk/Guitar-PNG-Image-500x556.png"
         title="Paella dish"
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p" className={classes.description}>
-          {data.description}
+        <Typography variant="body2" color="textSecondary" component="p" className={classes.name}>
+          {data.name.charAt(0).toUpperCase()
+           + data.name.slice(1)}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p" className={classes.amount}>
-          20ml
+         {data.quantity}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p" className={classes.price}>
-          200/-
+          ৳ {data.price}
         </Typography>
         <MoDal open={open} closeModal={closeModal} data={modalData} />
       </CardContent>

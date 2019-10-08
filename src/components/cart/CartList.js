@@ -75,7 +75,7 @@ export default function SimpleModal({ closeModal }) {
   const classes = useStyles();
   const [visible, setVisible] = useState(false);
 
-  const { cart } = useSelector(state => state.dummyData);
+  const { cart } = useSelector(state => state.productData);
 
   function hideDiv() {
     setVisible(!visible);

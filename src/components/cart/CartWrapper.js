@@ -39,7 +39,9 @@ export default function CartWrapper({ setClass, unSetClass, data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-  const { cart } = useSelector(state => state.dummyData);
+  const { cart } = useSelector(state => state.productData);
+
+  console.log('cartdata...', cart);
 
 
   function closeModal() {
