@@ -41,9 +41,6 @@ export default function CartWrapper({ setClass, unSetClass, data }) {
 
   const { cart } = useSelector(state => state.productData);
 
-  console.log('cartdata...', cart);
-
-
   function closeModal() {
     setOpen(false);
     unSetClass();

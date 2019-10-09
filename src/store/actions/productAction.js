@@ -13,8 +13,6 @@ import {
 // eslint-disable-next-line import/prefer-default-export
 export const getProductData = (dispatch) => {
   axios('http://localhost:9100/api/products').then((result) => {
-    console.log('Result-----------------');
-    console.log(result);
     dispatch({
       type: GET_PRODUCT_DATA,
       payload: {

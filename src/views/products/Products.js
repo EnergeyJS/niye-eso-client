@@ -20,7 +20,6 @@ export default function Products() {
 
   const addToCart = useCallback(item => dispatch(addingToCart(item)),
     [dispatch]);
-  console.log('addtocart', addToCart);
 
   return (
     <div>
