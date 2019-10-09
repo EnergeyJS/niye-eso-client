@@ -1,15 +1,12 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import InputLabel from '@material-ui/core/InputLabel';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Input from '@material-ui/core/Input';
+import axios from 'axios';
 
 import useStyles from './style';
 
@@ -27,14 +24,24 @@ export default function TextFields() {
     setValues({ ...values, showPassword: !values.showPassword });
   };
   const handleChange = name => (event) => {
-    // eslint-disable-next-line no-console
-    console.log(event.target.name);
     setValues({ ...values, [name]: event.target.value });
+  };
+
+  const sigin = (e) => {
+    e.preventDefault();
+    axios.post('/api/auth/login', {
+      username: 'Nuruzzaman Khan',
+      password: '123456',
+    }).then((result) => {
+      const { data } = result;
+      // eslint-disable-next-line no-undef
+      localStorage.setItem('Token', `Bearer ${data.token}`);
+    });
   };
 
   return (
     <div>
-      <form className={classes.container} noValidate autoComplete='off'>
+      <form className={classes.container} noValidate autoComplete='off' onSubmit={sigin}>
         <TextField
           id='standard-name'
           label='Email'
@@ -78,7 +85,7 @@ export default function TextFields() {
           />
           Keep me logged in
         </div>
-        <Button className={classes.button}>Submit</Button>
+        <Button type="submit" className={classes.button}>Submit</Button>
       </form>
     </div>
   );
