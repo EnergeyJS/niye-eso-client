@@ -8,7 +8,7 @@ export const signUp = ({ username, mobileNumber, password } = {}) => {
     password,
   }).then((result) => {
     const { data } = result;
-    // eslint-disable-next-line no-undef
+    // eslint-disable-next-line no-console
     console.log(data);
   });
 };
