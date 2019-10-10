@@ -11,6 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Input from '@material-ui/core/Input';
+import { signUp } from '../../../store/actions/userAction';
 import useStyles from './style';
 
 export default function TextFields() {
@@ -21,28 +22,45 @@ export default function TextFields() {
     weight: '',
     weightRange: '',
     showPassword: false,
+    username: '',
+    mobileNumber: '',
   });
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
   const handleChange = name => (event) => {
-    // eslint-disable-next-line no-console
-    console.log(event.target.name);
     setValues({ ...values, [name]: event.target.value });
+  };
+
+  const submitSignUp = (event) => {
+    event.preventDefault();
+    signUp({ username: values.username, mobileNumber: values.mobileNumber, password: values.password });
   };
 
   return (
     <div>
-      <form className={classes.container} noValidate autoComplete="off">
+      <form className={classes.container} noValidate autoComplete="off" onSubmit={submitSignUp}>
         <TextField
           id="standard-name"
-          label="Email"
-          name="Email"
+          label="User Name"
+          name="username"
           variant="filled"
           className={classes.textField}
           value={values.name}
-          onChange={handleChange('name')}
+          onChange={handleChange('username')}
+          margin="normal"
+          helperText="Test"
+        />
+
+        <TextField
+          id="standard-name"
+          label="Mobile Number"
+          name="mobileNumber"
+          variant="filled"
+          className={classes.textField}
+          value={values.name}
+          onChange={handleChange('mobileNumber')}
           margin="normal"
           helperText="Test"
         />
@@ -94,7 +112,7 @@ export default function TextFields() {
             ),
           }}
         />
-        <Button className={classes.button}>Submit</Button>
+        <Button type="submit" className={classes.button}>Submit</Button>
       </form>
     </div>
   );

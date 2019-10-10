@@ -12,7 +12,7 @@ import {
 
 // eslint-disable-next-line import/prefer-default-export
 export const getProductData = (dispatch) => {
-  axios('http://localhost:9100/api/products').then((result) => {
+  axios('/api/products').then((result) => {
     dispatch({
       type: GET_PRODUCT_DATA,
       payload: {
@@ -23,10 +23,8 @@ export const getProductData = (dispatch) => {
 };
 
 export const addingToCart = cartData => ({
-
   type: CART_DATA,
   payload: cartData,
-
 });
 
 export const getFilterDummyData = (dispatch, serachValue) => {

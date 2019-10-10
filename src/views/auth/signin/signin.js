@@ -6,8 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import axios from 'axios';
-
+import { signIn } from '../../../store/actions/authAction';
 import useStyles from './style';
 
 export default function TextFields() {
@@ -18,6 +17,7 @@ export default function TextFields() {
     weight: '',
     weightRange: '',
     showPassword: false,
+    username: '',
   });
 
   const handleClickShowPassword = () => {
@@ -27,29 +27,22 @@ export default function TextFields() {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  const sigin = (e) => {
-    e.preventDefault();
-    axios.post('/api/auth/login', {
-      username: 'Nuruzzaman Khan',
-      password: '123456',
-    }).then((result) => {
-      const { data } = result;
-      // eslint-disable-next-line no-undef
-      localStorage.setItem('Token', `Bearer ${data.token}`);
-    });
+  const sigIn = (event) => {
+    event.preventDefault();
+    signIn({ username: values.username, password: values.password });
   };
 
   return (
     <div>
-      <form className={classes.container} noValidate autoComplete='off' onSubmit={sigin}>
+      <form className={classes.container} noValidate autoComplete='off' onSubmit={sigIn}>
         <TextField
           id='standard-name'
-          label='Email'
-          name='Email'
+          label='User'
+          name='username'
           variant="filled"
           className={classes.textField}
           value={values.name}
-          onChange={handleChange('name')}
+          onChange={handleChange('username')}
           margin='normal'
           helperText='Test'
         />
